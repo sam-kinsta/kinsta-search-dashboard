@@ -132,7 +132,7 @@ body {
 .spike-dot-note { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 2px; }
 .chart-outer { position: relative; }
 .tt {
-  position: absolute; background: var(--surface2);
+  position: fixed; background: var(--surface2);
   border: 1px solid var(--border2); border-radius: 3px;
   padding: 8px 11px; font-size: 0.7rem; line-height: 1.75;
   pointer-events: none; opacity: 0; transition: opacity .08s;
@@ -386,8 +386,8 @@ body {
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Key Chat Pages</div>
-      <div class="kpi-val">176,087</div>
-      <div class="kpi-foot"><span class="delta down">▼ 2.0%</span><span class="kpi-src">Google Analytics</span></div>
+      <div class="kpi-val">133,625</div>
+      <div class="kpi-foot"><span class="delta down">▼ 4.4%</span><span class="kpi-src">Google Analytics</span></div>
       <div class="kpi-sub">19 page groups (kinsta.com only) · /, /wordpress-hosting/*, /pricing/, /signup/*, /add-ons/*, /talk-to-sales/, + more</div>
     </div>
     <div class="kpi">
@@ -709,9 +709,9 @@ canvas.addEventListener('mousemove',e=>{
     <div class="tt-row"><span><span class="tt-dot" style="background:#1EC8AC"></span>Current</span><strong>${fmt(cv)}</strong></div>
     <div class="tt-row"><span><span class="tt-dot" style="background:#253A55"></span>Previous</span><strong>${fmt(pv)}</strong></div>
     <div class="tt-row" style="color:${col}"><span>vs prior</span><strong>${dir} ${Math.abs(pct)}%</strong></div>${extra}`;
-  const ww=window.innerWidth; let left=e.pageX+14;
-  if(left+210>ww) left=e.pageX-224;
-  tt.style.left=left+'px'; tt.style.top=(e.pageY-50)+'px'; tt.style.opacity='1';
+  const ww=window.innerWidth; let left=e.clientX+14;
+  if(left+210>ww) left=e.clientX-224;
+  tt.style.left=left+'px'; tt.style.top=(e.clientY-50)+'px'; tt.style.opacity='1';
 });
 canvas.addEventListener('mouseleave',()=>tt.style.opacity='0');
 document.querySelectorAll('.tog').forEach(b=>{
@@ -723,9 +723,9 @@ document.querySelectorAll('.tog').forEach(b=>{
 
 // ── Device bars ─────────────────────────────────────────
 const devices=[
-  {n:'desktop',c:436962,p:447408,cp:65.7,fill:'bar-fill-curr'},
-  {n:'mobile', c:222686,p:207825,cp:33.5,fill:'mobile'},
-  {n:'tablet', c:5611,  p:4526,  cp:0.8, fill:'tablet'},
+  {n:'desktop',c:320363,p:330125,cp:58.9,fill:'bar-fill-curr'},
+  {n:'mobile', c:218499,p:202441,cp:40.1,fill:'mobile'},
+  {n:'tablet', c:5465,  p:4341,  cp:1.0, fill:'tablet'},
 ];
 document.getElementById('dev-bars').innerHTML=devices.map(d=>{
   const pct=(((d.c-d.p)/d.p)*100).toFixed(1);
@@ -784,7 +784,7 @@ barRows([
 document.getElementById('kp-tbody').innerHTML=[
   {u:'/wordpress-hosting/',c:20251,p:15578},
   {u:'/pricing/',c:12472,p:13787},
-  {u:'/add-ons/kinsta-auto-updates/',c:9682,p:14447},
+  {u:'/add-ons/kinsta-automatic-updates/',c:9682,p:14447},
   {u:'/cloudways-alternative/',c:6625,p:1589},
   {u:'/signup/wp/',c:4439,p:4370},
   {u:'/agency-partner-program/',c:3853,p:4122},
