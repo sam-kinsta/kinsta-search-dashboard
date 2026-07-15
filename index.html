@@ -37,8 +37,7 @@ body {
 
 /* ── Header ── */
 .header {
-  display: flex;
-  align-items: baseline;
+  display: flex; align-items: baseline;
   justify-content: space-between;
   padding: 24px 0 20px;
   border-bottom: 1px solid var(--border);
@@ -50,43 +49,35 @@ body {
 .hd-period { font-size: 0.786rem; color: var(--text2); margin-left: 4px; }
 .hd-meta { font-size: 0.686rem; color: var(--text3); font-variant-numeric: tabular-nums; }
 
-/* ── Section ── */
-.section { margin-top: 28px; }
-.section-lbl {
-  font-size: 0.629rem; font-weight: 600;
-  letter-spacing: 0.09em; text-transform: uppercase;
-  color: var(--text3); margin-bottom: 10px;
-}
-
-/* ── KPI Grid 3×3 ── */
+/* ── KPI grids ── */
 .kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-top: 20px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+}
+.kpi-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+  margin-top: 8px;
 }
 .kpi {
   background: var(--surface);
   padding: 16px 18px 14px;
   display: flex; flex-direction: column; gap: 5px;
 }
+.kpi.compact { padding: 12px 18px; }
 .kpi-lbl {
   font-size: 0.629rem; font-weight: 600;
-  letter-spacing: 0.07em; text-transform: uppercase;
-  color: var(--text3);
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--text3);
 }
 .kpi-val {
   font-size: 1.5rem; font-weight: 600;
   letter-spacing: -0.03em; color: var(--text);
   font-variant-numeric: tabular-nums; line-height: 1;
 }
-.kpi-foot {
-  display: flex; align-items: center; gap: 7px; margin-top: 1px;
-}
+.kpi.compact .kpi-val { font-size: 1.2rem; }
+.kpi-foot { display: flex; align-items: center; gap: 7px; margin-top: 1px; }
 .delta {
   display: inline-flex; align-items: center; gap: 2px;
   font-size: 0.7rem; font-weight: 700;
@@ -96,8 +87,16 @@ body {
 .delta.up   { color: var(--up);   background: var(--up-bg); }
 .delta.down { color: var(--down); background: var(--down-bg); }
 .delta.flat { color: var(--neutral); background: rgba(122,154,184,0.1); }
-.kpi-src { font-size: 0.643rem; color: var(--text3); }
-.kpi-sub { font-size: 0.643rem; color: var(--text3); }
+.kpi-src  { font-size: 0.643rem; color: var(--text3); }
+.kpi-sub  { font-size: 0.629rem; color: var(--text3); }
+
+/* ── Section ── */
+.section { margin-top: 28px; }
+.section-lbl {
+  font-size: 0.629rem; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--text3); margin-bottom: 10px;
+}
 
 /* ── Chart ── */
 .chart-head {
@@ -170,8 +169,6 @@ body {
   font-size: 0.786rem; color: var(--text);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 62%;
 }
-.bar-lbl a { color: inherit; text-decoration: none; }
-.bar-lbl a:hover { color: var(--teal); }
 .bar-r { display: flex; align-items: baseline; gap: 7px; flex-shrink: 0; }
 .bar-val { font-size: 0.786rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text); }
 .bar-d { font-size: 0.643rem; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 42px; text-align: right; }
@@ -183,7 +180,53 @@ body {
 .bar-fill-prev { position: absolute; top: 0; left: 0; height: 100%; border-radius: 2px; background: var(--border2); }
 .bar-fill-curr { position: relative; z-index: 1; height: 100%; border-radius: 2px; background: var(--teal); transition: width .55s cubic-bezier(.4,0,.2,1); }
 
-/* ── Key pages table ── */
+/* ── Branded/non-branded rows ── */
+.brand-row {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+.brand-row:last-child { border-bottom: none; }
+.brand-label { font-size: 0.786rem; color: var(--text); }
+.brand-label small { display: block; font-size: 0.629rem; color: var(--text3); margin-top: 1px; }
+.brand-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.brand-val { font-size: 0.9rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text); }
+
+/* ── Device bars ── */
+.dev-row { display: flex; flex-direction: column; gap: 3px; margin-bottom: 10px; }
+.dev-row:last-child { margin-bottom: 0; }
+.dev-meta { display: flex; justify-content: space-between; align-items: baseline; }
+.dev-label { font-size: 0.786rem; color: var(--text); text-transform: capitalize; }
+.dev-right { display: flex; align-items: center; gap: 8px; }
+.dev-share { font-size: 0.629rem; color: var(--text3); }
+.dev-val { font-size: 0.786rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text); }
+.dev-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.dev-fill { height: 100%; border-radius: 2px; background: var(--teal); }
+.dev-fill.mobile { background: #818CF8; }
+.dev-fill.tablet { background: var(--neutral); }
+
+/* ── Movers table ── */
+.movers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+.mover-col h4 {
+  font-size: 0.629rem; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+}
+.mover-col h4.gain { color: var(--up); }
+.mover-col h4.lose { color: var(--down); }
+.mover-row {
+  display: grid; grid-template-columns: 1fr auto auto;
+  gap: 0 10px; align-items: baseline;
+  padding: 5px 0; border-bottom: 1px solid var(--border);
+}
+.mover-row:last-child { border-bottom: none; }
+.mover-url { font-size: 0.714rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 260px; }
+.mover-abs { font-size: 0.714rem; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.mover-abs.gain { color: var(--up); }
+.mover-abs.lose { color: var(--down); }
+.mover-pct { font-size: 0.643rem; color: var(--text3); text-align: right; white-space: nowrap; }
+
+/* ── Tables ── */
 .kp-table { width: 100%; border-collapse: collapse; }
 .kp-table th {
   font-size: 0.629rem; font-weight: 600;
@@ -204,7 +247,6 @@ body {
 .kp-table td.down { color: var(--down); font-weight: 700; }
 .kp-table td.new  { color: var(--teal); font-weight: 700; }
 
-/* ── Keyword table ── */
 .kw-table { width: 100%; border-collapse: collapse; }
 .kw-table th {
   font-size: 0.629rem; font-weight: 600;
@@ -220,17 +262,16 @@ body {
 }
 .kw-table td.r { text-align: right; padding-left: 12px; white-space: nowrap; }
 .kw-table tr:last-child td { border-bottom: none; }
-.kw-term { max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kw-term { max-width: 240px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pos-pill {
   display: inline-block; padding: 0 5px;
   border-radius: 2px; font-size: 0.629rem; font-weight: 700;
   font-variant-numeric: tabular-nums; line-height: 1.6;
 }
-.pos-pill.top  { background: var(--teal-dim); color: var(--teal); }
-.pos-pill.mid  { background: rgba(251,191,36,.1); color: #FBBF24; }
-.pos-pill.low  { background: rgba(122,154,184,.1); color: var(--neutral); }
+.pos-pill.top { background: var(--teal-dim); color: var(--teal); }
+.pos-pill.mid { background: rgba(251,191,36,.1); color: #FBBF24; }
+.pos-pill.low { background: rgba(122,154,184,.1); color: var(--neutral); }
 
-/* ── Revenue table ── */
 .rev-table { width: 100%; border-collapse: collapse; }
 .rev-table th {
   font-size: 0.629rem; font-weight: 600;
@@ -250,6 +291,23 @@ body {
 .rev-table td.down { color: var(--down); font-weight: 700; }
 .rev-spacer { padding-left: 14px; }
 
+/* ── Alert banner ── */
+.alert-banner {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(255,84,115,0.07); border: 1px solid rgba(255,84,115,0.25);
+  border-radius: 3px; padding: 10px 14px; margin-top: 12px;
+  font-size: 0.714rem; color: var(--text2); line-height: 1.5;
+}
+.alert-icon { color: var(--down); font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+
+/* ── Insight callout ── */
+.insight {
+  background: var(--teal-dim); border: 1px solid rgba(30,200,172,0.2);
+  border-radius: 3px; padding: 10px 14px;
+  font-size: 0.714rem; color: var(--text2); line-height: 1.5;
+  margin-bottom: 14px;
+}
+
 /* ── Footer ── */
 .footer {
   margin-top: 48px; padding-top: 22px;
@@ -267,15 +325,16 @@ body {
 
 /* ── Responsive ── */
 @media (max-width: 960px) {
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .kpi-grid, .kpi-strip { grid-template-columns: repeat(2, 1fr); }
   .two-col { grid-template-columns: 1fr; }
+  .movers-grid { grid-template-columns: 1fr; }
   .footer { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .kpi-grid { grid-template-columns: 1fr; }
+  .kpi-grid, .kpi-strip { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .bar-fill-curr { transition: none; }
+  .bar-fill-curr, .dev-fill { transition: none; }
 }
 </style>
 </head>
@@ -292,89 +351,76 @@ body {
     <div class="hd-meta">Generated Jul 15, 2026 &nbsp;·&nbsp; Google Analytics 4 · Google Search Console · Ahrefs</div>
   </header>
 
-  <!-- KPI tiles (3 × 3) -->
+  <!-- Primary KPI grid (3×3) -->
   <div class="kpi-grid" style="margin-top:24px">
-
-    <!-- Row 1: Traffic reach -->
     <div class="kpi">
       <div class="kpi-lbl">Organic Sessions</div>
       <div class="kpi-val">236,761</div>
-      <div class="kpi-foot">
-        <span class="delta down">▼ 2.4%</span>
-        <span class="kpi-src">Google Analytics</span>
-      </div>
+      <div class="kpi-foot"><span class="delta down">▼ 2.4%</span><span class="kpi-src">Google Analytics</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Organic Clicks</div>
       <div class="kpi-val">221,606</div>
-      <div class="kpi-foot">
-        <span class="delta down">▼ 9.5%</span>
-        <span class="kpi-src">Google Search Console</span>
-      </div>
+      <div class="kpi-foot"><span class="delta down">▼ 9.5%</span><span class="kpi-src">Google Search Console</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Keywords — Top 1–3</div>
       <div class="kpi-val">13,758</div>
-      <div class="kpi-foot">
-        <span class="delta up">▲ 18.7%</span>
-        <span class="kpi-src">Ahrefs</span>
-      </div>
+      <div class="kpi-foot"><span class="delta up">▲ 18.7%</span><span class="kpi-src">Ahrefs</span></div>
     </div>
-
-    <!-- Row 2: SEO authority -->
     <div class="kpi">
       <div class="kpi-lbl">Total Ranking Keywords</div>
       <div class="kpi-val">39,058</div>
-      <div class="kpi-foot">
-        <span class="delta up">▲ 0.5%</span>
-        <span class="kpi-src">Ahrefs</span>
-      </div>
+      <div class="kpi-foot"><span class="delta up">▲ 0.5%</span><span class="kpi-src">Ahrefs</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Referring Domains</div>
       <div class="kpi-val">34,008</div>
-      <div class="kpi-foot">
-        <span class="delta down">▼ 1.2%</span>
-        <span class="kpi-src">Ahrefs</span>
-      </div>
+      <div class="kpi-foot"><span class="delta down">▼ 1.2%</span><span class="kpi-src">Ahrefs</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Key Intent Pages</div>
       <div class="kpi-val">64,614</div>
-      <div class="kpi-foot">
-        <span class="delta up">▲ 4.9%</span>
-        <span class="kpi-src">Google Analytics</span>
-      </div>
+      <div class="kpi-foot"><span class="delta up">▲ 4.9%</span><span class="kpi-src">Google Analytics</span></div>
       <div class="kpi-sub">sessions across 12 key pages</div>
     </div>
-
-    <!-- Row 3: Conversion signals -->
     <div class="kpi">
       <div class="kpi-lbl">Key Chat Pages</div>
       <div class="kpi-val">1,514</div>
-      <div class="kpi-foot">
-        <span class="delta down">▼ 5.1%</span>
-        <span class="kpi-src">Google Analytics</span>
-      </div>
+      <div class="kpi-foot"><span class="delta down">▼ 5.1%</span><span class="kpi-src">Google Analytics</span></div>
       <div class="kpi-sub">/talk-to-sales/ + /contact-us/</div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Purchases</div>
       <div class="kpi-val">1,474</div>
-      <div class="kpi-foot">
-        <span class="delta up">▲ 7.7%</span>
-        <span class="kpi-src">Google Analytics</span>
-      </div>
+      <div class="kpi-foot"><span class="delta up">▲ 7.7%</span><span class="kpi-src">Google Analytics</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Item Revenue (MRR)</div>
       <div class="kpi-val">$97,910</div>
-      <div class="kpi-foot">
-        <span class="delta up">▲ 5.8%</span>
-        <span class="kpi-src">Google Analytics</span>
-      </div>
+      <div class="kpi-foot"><span class="delta up">▲ 5.8%</span><span class="kpi-src">Google Analytics</span></div>
     </div>
+  </div>
 
+  <!-- Secondary KPI strip: impressions · CTR · CVR -->
+  <div class="kpi-strip">
+    <div class="kpi compact">
+      <div class="kpi-lbl">GSC Impressions</div>
+      <div class="kpi-val">28.5M</div>
+      <div class="kpi-foot"><span class="delta down">▼ 7.4%</span><span class="kpi-src">Google Search Console</span></div>
+    </div>
+    <div class="kpi compact">
+      <div class="kpi-lbl">Avg CTR (organic)</div>
+      <div class="kpi-val">0.78%</div>
+      <div class="kpi-foot"><span class="delta flat">≈ flat</span><span class="kpi-src">Google Search Console</span></div>
+      <div class="kpi-sub">Click decline is impression-driven, not CTR quality</div>
+    </div>
+    <div class="kpi compact">
+      <div class="kpi-lbl">Organic CVR</div>
+      <div class="kpi-val">0.62%</div>
+      <div class="kpi-foot"><span class="delta up">▲ 10.3%</span><span class="kpi-src">Google Analytics</span></div>
+      <div class="kpi-sub">Purchases ÷ Organic Sessions (0.56% prior period)</div>
+    </div>
   </div>
 
   <!-- Trend Chart -->
@@ -397,10 +443,52 @@ body {
         <canvas id="chart" height="218"></canvas>
         <div class="spike-note">
           <div class="spike-dot-note"></div>
-          <span><strong style="color:var(--text2)">Jun 22</strong> — Launch of <em>/ai-bot-traffic/</em>, <em>/es/trafico-ia-bots/</em>, and <em>/es/proteccion-contra-bots/</em>. Sessions spiked to 30,324 (+93% day-on-day) driven by social shares and direct links to new content — not a ranking event. GSC shows no position movement on this date (Google Analytics + Google Search Console).</span>
+          <span><strong style="color:var(--text2)">Jun 22</strong> — Launch of <em>/ai-bot-traffic/</em>, <em>/es/trafico-ia-bots/</em>, and <em>/es/proteccion-contra-bots/</em>. Sessions spiked to 30,324 (+93% day-on-day) driven by social shares and direct links to new content — not a ranking event. GSC clicks were unchanged on this date (Google Analytics + Google Search Console).</span>
         </div>
       </div>
       <div class="tt" id="tt"></div>
+    </div>
+  </div>
+
+  <!-- Branded / Non-branded + Device split -->
+  <div class="section two-col">
+    <div class="panel">
+      <div class="panel-title">Branded vs Non-Branded Clicks &nbsp;·&nbsp; Google Search Console</div>
+      <div class="insight">
+        Branded clicks <strong style="color:var(--up)">+13.5%</strong> while non-branded <strong style="color:var(--down)">−11.4%</strong>. Click decline is concentrated in informational/TOFU content — brand search is strengthening. Consistent with the BOFU pivot.
+      </div>
+      <div class="brand-row">
+        <div class="brand-label">
+          Branded
+          <small>queries containing "kinsta" / "mykinsta"</small>
+        </div>
+        <div class="brand-right">
+          <div class="brand-val">20,765</div>
+          <span class="delta up">▲ 13.5%</span>
+        </div>
+      </div>
+      <div class="brand-row">
+        <div class="brand-label">
+          Non-Branded
+          <small>all other queries (total GSC minus branded)</small>
+        </div>
+        <div class="brand-right">
+          <div class="brand-val">200,841</div>
+          <span class="delta down">▼ 11.4%</span>
+        </div>
+      </div>
+      <div class="brand-row" style="border-bottom:none;padding-top:12px">
+        <div class="brand-label" style="color:var(--text3);font-size:0.629rem">
+          Branded CTR: 35.8% &nbsp;·&nbsp; Non-branded CTR: 0.83%
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Sessions by Device &nbsp;·&nbsp; Google Analytics (all channels)</div>
+      <div class="insight">
+        Mobile growing +7.2% and gaining share (+2pp). Relevant given the active CWV/LCP investigation on mobile — mobile traffic is rising despite the performance issue.
+      </div>
+      <div id="dev-bars"></div>
     </div>
   </div>
 
@@ -432,18 +520,32 @@ body {
     </table>
   </div>
 
+  <!-- Top organic movers -->
+  <div class="section full-panel">
+    <div class="panel-title">Top Organic Movers — Clicks &nbsp;·&nbsp; Google Search Console</div>
+    <div class="alert-banner">
+      <span class="alert-icon">▼</span>
+      <span><strong style="color:var(--down)">/blog/err_ssl_protocol_error/</strong> is the single largest organic loser: −4,034 clicks (−28.5%, now 10,115 clicks). This is one of Kinsta's highest-traffic pages. Position is 6.5 — investigate whether a ranking drop or an AI Overview is suppressing clicks before this becomes a revenue risk.</span>
+    </div>
+    <div class="movers-grid" style="margin-top:16px">
+      <div class="mover-col">
+        <h4 class="gain">Top Gaining Pages</h4>
+        <div id="movers-gain"></div>
+      </div>
+      <div class="mover-col">
+        <h4 class="lose">Top Losing Pages</h4>
+        <div id="movers-lose"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- GSC Keywords (overall + key pages) -->
   <div class="section two-col">
     <div class="panel">
       <div class="panel-title">Top Keywords by Clicks &nbsp;·&nbsp; Google Search Console</div>
       <table class="kw-table">
         <thead>
-          <tr>
-            <th>Query</th>
-            <th class="r">Pos</th>
-            <th class="r">Impr</th>
-            <th class="r">Clicks</th>
-          </tr>
+          <tr><th>Query</th><th class="r">Pos</th><th class="r">Impr</th><th class="r">Clicks</th></tr>
         </thead>
         <tbody id="kw-all-tbody"></tbody>
       </table>
@@ -452,12 +554,7 @@ body {
       <div class="panel-title">Keywords from Key Intent Pages &nbsp;·&nbsp; Google Search Console</div>
       <table class="kw-table">
         <thead>
-          <tr>
-            <th>Query</th>
-            <th class="r">Pos</th>
-            <th class="r">Impr</th>
-            <th class="r">Clicks</th>
-          </tr>
+          <tr><th>Query</th><th class="r">Pos</th><th class="r">Impr</th><th class="r">Clicks</th></tr>
         </thead>
         <tbody id="kw-key-tbody"></tbody>
       </table>
@@ -487,243 +584,241 @@ body {
       <h4>Data Sources</h4>
       <ul>
         <li>Google Analytics 4 (Property 254014305) — sessions, purchases, item revenue. Hostname filter: kinsta.com for session data; no filter for purchases and revenue.</li>
-        <li>Google Search Console — organic clicks, impressions, keyword positions. Site: kinsta.com. Data delayed 2–3 days.</li>
+        <li>Google Search Console — organic clicks, impressions, keyword positions. Site: kinsta.com. Branded split captures top 5,000 keywords; non-branded is residual (total minus branded).</li>
         <li>Ahrefs — organic keyword count (top 1–3, total), referring domains. Point-in-time estimates, not 30-day sums.</li>
-        <li>Traffic annotations doc unavailable (requires Atlassian credentials not configured). Jun 22 event confirmed via GA4 + known content launch.</li>
+        <li>Device split uses all-channel GA4 sessions (organic-only device data unavailable via API without a session-scoped filter).</li>
+        <li>Traffic annotations doc unavailable (requires Atlassian credentials). Jun 22 event confirmed via GA4 + known content launch.</li>
       </ul>
     </div>
     <div>
-      <h4>Interpretation Notes</h4>
+      <h4>Key Interpretations</h4>
       <ul>
-        <li>Organic Sessions (GA4, −2.4%) and Organic Clicks (GSC, −9.5%) diverge because sessions count visits from all traffic types while clicks count only GSC-tracked organic clicks. Both indicate modest decline.</li>
-        <li>Keywords Top 1–3 (+18.7%) improving while overall clicks fall: ranking quality is improving on branded/navigational terms while high-volume TOFU blog content loses impressions — consistent with the BOFU pivot.</li>
-        <li>Revenue (+5.8%) and Purchases (+7.7%) both growing despite traffic decline — conversion rate and average order value improving.</li>
-        <li>Large bandwidth-plan revenue increases partly reflect Kinsta's migration from visits-based to bandwidth-based billing (see /blog/bandwidth-based-plans/). Prior-period "Visits" variants and current-period "Bandwidth" variants are the same plan tier.</li>
-        <li>Jun 22 session spike caused by new bot-traffic content pages — not a ranking event. GSC clicks for that date are normal.</li>
+        <li>GSC clicks (−9.5%) ≠ GA4 sessions (−2.4%). Clicks = organic only; sessions include repeat visits and non-Google organic sources.</li>
+        <li>CTR flat at 0.78%: click decline driven by 7.4% impression loss, not quality deterioration.</li>
+        <li>Branded clicks +13.5% / non-branded −11.4%: brand demand strengthening while TOFU blog traffic falls — consistent with BOFU pivot.</li>
+        <li>Revenue (+5.8%) and Purchases (+7.7%) both growing despite traffic decline. Organic CVR improved from 0.56% to 0.62%.</li>
+        <li>Large bandwidth-plan revenue swings partly reflect visits→bandwidth billing migration. Prior-period "Visits" and current-period "Bandwidth" are the same plan tier.</li>
       </ul>
     </div>
   </footer>
 
-</div><!-- /wrap -->
-
+</div>
 <script>
-const fmt = n => Number(n).toLocaleString();
-const fmtK = n => n >= 10000 ? (n/1000).toFixed(0)+'k' : n >= 1000 ? (n/1000).toFixed(1)+'k' : n.toString();
+const fmt  = n => Number(n).toLocaleString();
+const fmtK = n => n>=10000?(n/1000).toFixed(0)+'k':n>=1000?(n/1000).toFixed(1)+'k':n.toString();
 
-// ── Chart data ──────────────────────────────────────────
-const LABELS   = ['Jun 7','Jun 8','Jun 9','Jun 10','Jun 11','Jun 12','Jun 13','Jun 14','Jun 15','Jun 16','Jun 17','Jun 18','Jun 19','Jun 20','Jun 21','Jun 22','Jun 23','Jun 24','Jun 25','Jun 26','Jun 27','Jun 28','Jun 29','Jun 30','Jul 1','Jul 2','Jul 3','Jul 4','Jul 5','Jul 6'];
-const C_SES    = [14991,20097,24742,22357,20193,16818,12893,14690,18542,19881,18222,18052,16809,13543,15707,30324,27218,19402,22255,17774,13800,14858,21152,22415,19302,18791,16207,12487,15298,19218];
-const P_SES    = [18274,15216,16416,19335,20335,20776,19506,17871,14578,16008,20394,21946,20889,20834,18321,12896,15374,20193,19201,19653,19205,20386,13635,15995,20136,20245,19961,19087,17155,13155];
-const C_USR    = [14744,19628,24024,22636,20127,16355,12727,14849,18593,19944,17913,17952,16855,13361,15902,30417,26771,19701,21744,17527,13602,14682,20633,22403,18925,18348,15855,12385,14836,19333];
-const P_USR    = [17643,14857,15771,19585,19801,20297,19175,17297,14738,15657,19948,21428,20662,20773,18062,13066,14622,20435,18874,18879,19155,20059,13420,15555,20078,19905,19452,18920,16822,12773];
+// ── Chart ───────────────────────────────────────────────
+const LABELS=[' 7',' 8',' 9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30',' 1',' 2',' 3',' 4',' 5',' 6'];
+const FULL_LABELS=['Jun 7','Jun 8','Jun 9','Jun 10','Jun 11','Jun 12','Jun 13','Jun 14','Jun 15','Jun 16','Jun 17','Jun 18','Jun 19','Jun 20','Jun 21','Jun 22','Jun 23','Jun 24','Jun 25','Jun 26','Jun 27','Jun 28','Jun 29','Jun 30','Jul 1','Jul 2','Jul 3','Jul 4','Jul 5','Jul 6'];
+const C_SES=[14991,20097,24742,22357,20193,16818,12893,14690,18542,19881,18222,18052,16809,13543,15707,30324,27218,19402,22255,17774,13800,14858,21152,22415,19302,18791,16207,12487,15298,19218];
+const P_SES=[18274,15216,16416,19335,20335,20776,19506,17871,14578,16008,20394,21946,20889,20834,18321,12896,15374,20193,19201,19653,19205,20386,13635,15995,20136,20245,19961,19087,17155,13155];
+const C_USR=[14744,19628,24024,22636,20127,16355,12727,14849,18593,19944,17913,17952,16855,13361,15902,30417,26771,19701,21744,17527,13602,14682,20633,22403,18925,18348,15855,12385,14836,19333];
+const P_USR=[17643,14857,15771,19585,19801,20297,19175,17297,14738,15657,19948,21428,20662,20773,18062,13066,14622,20435,18874,18879,19155,20059,13420,15555,20078,19905,19452,18920,16822,12773];
 
-const ANNOTATIONS = [
-  { idx: 15, label: 'Jun 22', color: '#1EC8AC',
-    title: 'New content launch — session spike',
-    detail: 'Three pages launched: /ai-bot-traffic/, /es/trafico-ia-bots/, /es/proteccion-contra-bots/. Sessions: 30,324 (+93% day-on-day). GSC clicks unchanged — organic rank not involved. Driven by social shares and direct links.' }
+const ANNOTATIONS=[
+  {idx:15,color:'#1EC8AC',title:'Content launch — session spike',
+   detail:'Three bot-traffic pages launched. Sessions 30,324 (+93% DoD). GSC clicks unchanged — organic rank not involved.'}
 ];
 
-let activeM = 'sessions';
-let canvasW = 0;
-const canvas = document.getElementById('chart');
-const tt = document.getElementById('tt');
+let activeM='sessions', canvasW=0;
+const canvas=document.getElementById('chart'), tt=document.getElementById('tt');
 
-function renderChart() {
-  const curr = activeM === 'sessions' ? C_SES : C_USR;
-  const prev = activeM === 'sessions' ? P_SES : P_USR;
-  const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.parentElement.getBoundingClientRect();
-  const W = Math.floor(rect.width); const H = 218;
-  canvasW = W;
-  canvas.width = W * dpr; canvas.height = H * dpr;
-  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-  const PAD = {t:14, r:22, b:0, l:50};
-  const pw = W - PAD.l - PAD.r, ph = H - PAD.t - PAD.b;
-  const mx = Math.max(...curr, ...prev);
-  const ymax = Math.ceil(mx / 5000) * 5000 * 1.07;
-  const xAt = i => PAD.l + (i / (curr.length-1)) * pw;
-  const yAt = v => PAD.t + ph - (v / ymax) * ph;
-  // Gridlines
-  const ticks = [0, 10000, 20000, 30000].filter(t => t <= ymax);
-  ctx.strokeStyle = 'rgba(30,45,66,.9)'; ctx.lineWidth = 1;
-  ticks.forEach(t => {
-    const y = yAt(t);
-    ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(W-PAD.r, y); ctx.stroke();
-    ctx.fillStyle = '#6B8BAA'; ctx.font = '10px -apple-system,Helvetica,sans-serif';
-    ctx.textAlign = 'right';
-    ctx.fillText(fmtK(t), PAD.l-6, y+3.5);
+function renderChart(){
+  const curr=activeM==='sessions'?C_SES:C_USR;
+  const prev=activeM==='sessions'?P_SES:P_USR;
+  const dpr=window.devicePixelRatio||1;
+  const rect=canvas.parentElement.getBoundingClientRect();
+  const W=Math.floor(rect.width); const H=218; canvasW=W;
+  canvas.width=W*dpr; canvas.height=H*dpr;
+  canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  const ctx=canvas.getContext('2d'); ctx.scale(dpr,dpr);
+  const PAD={t:14,r:22,b:0,l:50};
+  const pw=W-PAD.l-PAD.r, ph=H-PAD.t-PAD.b;
+  const mx=Math.max(...curr,...prev);
+  const ymax=Math.ceil(mx/5000)*5000*1.07;
+  const xAt=i=>PAD.l+(i/(curr.length-1))*pw;
+  const yAt=v=>PAD.t+ph-(v/ymax)*ph;
+  // Gridlines + y-labels
+  [0,10000,20000,30000].filter(t=>t<=ymax).forEach(t=>{
+    const y=yAt(t);
+    ctx.strokeStyle='rgba(30,45,66,.9)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(PAD.l,y); ctx.lineTo(W-PAD.r,y); ctx.stroke();
+    ctx.fillStyle='#7A9AB8'; ctx.font='10px -apple-system,Helvetica,sans-serif';
+    ctx.textAlign='right'; ctx.fillText(fmtK(t),PAD.l-6,y+3.5);
   });
-  // Prev area
+  // Month labels along x
+  ctx.fillStyle='#7A9AB8'; ctx.font='10px -apple-system,Helvetica,sans-serif'; ctx.textAlign='center';
+  ctx.fillText('Jun',PAD.l+pw*0.25,PAD.t+ph-4);
+  ctx.fillText('Jul',PAD.l+pw*0.9,PAD.t+ph-4);
+  // Previous area + line
   ctx.beginPath();
-  prev.forEach((v,i) => { const x=xAt(i),y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
-  ctx.lineTo(xAt(prev.length-1), PAD.t+ph); ctx.lineTo(xAt(0), PAD.t+ph); ctx.closePath();
+  prev.forEach((v,i)=>{const x=xAt(i),y=yAt(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.lineTo(xAt(prev.length-1),PAD.t+ph); ctx.lineTo(xAt(0),PAD.t+ph); ctx.closePath();
   ctx.fillStyle='rgba(30,58,85,.2)'; ctx.fill();
-  // Prev line
   ctx.beginPath();
-  prev.forEach((v,i)=>{ const x=xAt(i),y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+  prev.forEach((v,i)=>{const x=xAt(i),y=yAt(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
   ctx.strokeStyle='#253A55'; ctx.lineWidth=1.5; ctx.setLineDash([4,4]); ctx.stroke(); ctx.setLineDash([]);
-  // Curr area
-  const g = ctx.createLinearGradient(0,PAD.t,0,PAD.t+ph);
+  // Current area + line
+  const g=ctx.createLinearGradient(0,PAD.t,0,PAD.t+ph);
   g.addColorStop(0,'rgba(30,200,172,.2)'); g.addColorStop(1,'rgba(30,200,172,0)');
   ctx.beginPath();
-  curr.forEach((v,i)=>{ const x=xAt(i),y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+  curr.forEach((v,i)=>{const x=xAt(i),y=yAt(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
   ctx.lineTo(xAt(curr.length-1),PAD.t+ph); ctx.lineTo(xAt(0),PAD.t+ph); ctx.closePath();
   ctx.fillStyle=g; ctx.fill();
-  // Curr line
   ctx.beginPath();
-  curr.forEach((v,i)=>{ const x=xAt(i),y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+  curr.forEach((v,i)=>{const x=xAt(i),y=yAt(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
   ctx.strokeStyle='#1EC8AC'; ctx.lineWidth=2; ctx.stroke();
   // Annotation dots
-  ANNOTATIONS.forEach(a => {
+  ANNOTATIONS.forEach(a=>{
     const sx=xAt(a.idx), sy=yAt(curr[a.idx]);
     ctx.beginPath(); ctx.arc(sx,sy,5,0,Math.PI*2);
     ctx.fillStyle=a.color; ctx.fill();
     ctx.beginPath(); ctx.arc(sx,sy,5,0,Math.PI*2);
     ctx.strokeStyle='#0D1117'; ctx.lineWidth=2; ctx.stroke();
   });
-  // X axis labels
-  ctx.fillStyle='#6B8BAA'; ctx.font='10px -apple-system,Helvetica,sans-serif'; ctx.textAlign='center';
-  [0,7,14,21,29].forEach(i => ctx.fillText(LABELS[i], xAt(i), PAD.t+ph-4));
 }
-
-// Tooltip
-function handleMove(e) {
-  const curr = activeM === 'sessions' ? C_SES : C_USR;
-  const prev = activeM === 'sessions' ? P_SES : P_USR;
-  const r = canvas.getBoundingClientRect();
-  const mx = e.clientX - r.left - 50;
-  const idx = Math.round((mx / (canvasW-72)) * (curr.length-1));
-  if (idx < 0 || idx >= curr.length) { tt.style.opacity='0'; return; }
-  const cv=curr[idx], pv=prev[idx];
+canvas.addEventListener('mousemove',e=>{
+  const curr=activeM==='sessions'?C_SES:C_USR, prev=activeM==='sessions'?P_SES:P_USR;
+  const r=canvas.getBoundingClientRect();
+  const mx=e.clientX-r.left-50;
+  const idx=Math.round((mx/(canvasW-72))*(curr.length-1));
+  if(idx<0||idx>=curr.length){tt.style.opacity='0';return;}
+  const cv=curr[idx],pv=prev[idx];
   const pct=(((cv-pv)/pv)*100).toFixed(1);
-  const dir=cv>=pv?'▲':'▼'; const col=cv>=pv?'#10CF8E':'#FF5473';
-  // Check annotation
-  const ann = ANNOTATIONS.find(a=>a.idx===idx);
-  let extra = '';
-  if (ann) extra=`<div style="margin-top:4px;padding-top:4px;border-top:1px solid #253A55;font-size:.629rem;color:#7A9AB8;line-height:1.5;max-width:200px">${ann.title}</div>`;
-  tt.innerHTML=`
-    <div class="tt-lbl">${LABELS[idx]}</div>
+  const dir=cv>=pv?'▲':'▼', col=cv>=pv?'#10CF8E':'#FF5473';
+  const ann=ANNOTATIONS.find(a=>a.idx===idx);
+  const extra=ann?`<div style="margin-top:4px;padding-top:4px;border-top:1px solid #253A55;font-size:.629rem;color:#7A9AB8;line-height:1.5;max-width:200px">${ann.title}</div>`:'';
+  tt.innerHTML=`<div class="tt-lbl">${FULL_LABELS[idx]}</div>
     <div class="tt-row"><span><span class="tt-dot" style="background:#1EC8AC"></span>Current</span><strong>${fmt(cv)}</strong></div>
     <div class="tt-row"><span><span class="tt-dot" style="background:#253A55"></span>Previous</span><strong>${fmt(pv)}</strong></div>
-    <div class="tt-row" style="color:${col}"><span>vs prior period</span><strong>${dir} ${Math.abs(pct)}%</strong></div>
-    ${extra}`;
-  const ww=window.innerWidth;
-  let left=e.pageX+14;
+    <div class="tt-row" style="color:${col}"><span>vs prior</span><strong>${dir} ${Math.abs(pct)}%</strong></div>${extra}`;
+  const ww=window.innerWidth; let left=e.pageX+14;
   if(left+210>ww) left=e.pageX-224;
   tt.style.left=left+'px'; tt.style.top=(e.pageY-50)+'px'; tt.style.opacity='1';
-}
-canvas.addEventListener('mousemove', handleMove);
-canvas.addEventListener('mouseleave',()=>{ tt.style.opacity='0'; });
-document.querySelectorAll('.tog').forEach(b => {
+});
+canvas.addEventListener('mouseleave',()=>tt.style.opacity='0');
+document.querySelectorAll('.tog').forEach(b=>{
   b.addEventListener('click',()=>{
     document.querySelectorAll('.tog').forEach(x=>x.classList.remove('on'));
     b.classList.add('on'); activeM=b.dataset.m; renderChart();
   });
 });
 
-// ── Channel bars ──────────────────────────────────────────
-const channels=[
-  {n:'Organic Search',c:236761,p:242671},
-  {n:'Direct',c:131721,p:124095},
-  {n:'Paid Social',c:110426,p:96422},
-  {n:'Cross-network',c:20101,p:24181},
-  {n:'Paid Search',c:18070,p:16511},
-  {n:'Referral',c:12788,p:15887},
-  {n:'Unassigned',c:9493,p:9341},
-  {n:'Organic Social',c:4347,p:2587},
-  {n:'AI Assistant',c:2763,p:924},
-  {n:'Email',c:2740,p:3354},
+// ── Device bars ─────────────────────────────────────────
+const devices=[
+  {n:'desktop',c:436962,p:447408,cp:65.7,fill:'bar-fill-curr'},
+  {n:'mobile', c:222686,p:207825,cp:33.5,fill:'mobile'},
+  {n:'tablet', c:5611,  p:4526,  cp:0.8, fill:'tablet'},
 ];
-function barRows(items, maxV, container) {
-  container.innerHTML = items.map(({n,c,p,href})=>{
+document.getElementById('dev-bars').innerHTML=devices.map(d=>{
+  const pct=(((d.c-d.p)/d.p)*100).toFixed(1);
+  const cls=parseFloat(pct)>=0?'up':'down';
+  const dir=parseFloat(pct)>=0?'▲':'▼';
+  const fillCls=d.n==='mobile'?'mobile':d.n==='tablet'?'tablet':'';
+  return `<div class="dev-row">
+    <div class="dev-meta">
+      <span class="dev-label">${d.n}</span>
+      <div class="dev-right">
+        <span class="dev-share">${d.cp}%</span>
+        <span class="dev-val">${fmt(d.c)}</span>
+        <span class="delta ${cls}" style="font-size:.629rem;padding:0 4px">${dir} ${Math.abs(pct)}%</span>
+      </div>
+    </div>
+    <div class="dev-track"><div class="dev-fill ${fillCls}" style="width:0%" data-w="${d.cp}"></div></div>
+  </div>`;
+}).join('');
+
+// ── Channel bars ─────────────────────────────────────────
+const channels=[
+  {n:'Organic Search',c:236761,p:242671},{n:'Direct',c:131721,p:124095},
+  {n:'Paid Social',c:110426,p:96422},{n:'Cross-network',c:20101,p:24181},
+  {n:'Paid Search',c:18070,p:16511},{n:'Referral',c:12788,p:15887},
+  {n:'Unassigned',c:9493,p:9341},{n:'Organic Social',c:4347,p:2587},
+  {n:'AI Assistant',c:2763,p:924},{n:'Email',c:2740,p:3354},
+];
+function barRows(items,maxV,el){
+  el.innerHTML=items.map(({n,c,p})=>{
     const pct=p?(((c-p)/p)*100):null;
-    const ps=pct===null?'new':(pct>=0?`+${pct.toFixed(1)}%`:`${pct.toFixed(1)}%`);
+    const ps=pct===null?'new':pct>=0?`+${pct.toFixed(1)}%`:`${pct.toFixed(1)}%`;
     const cls=pct===null?'new':pct>=0?'up':'down';
     const cw=(c/maxV*100).toFixed(1), pw=p?(p/maxV*100).toFixed(1):'0';
-    const lbl=href?`<a href="https://kinsta.com${href}" target="_blank" rel="noopener">${n}</a>`:n;
     return `<div class="bar-row">
       <div class="bar-meta">
-        <div class="bar-lbl">${lbl}</div>
+        <div class="bar-lbl">${n}</div>
         <div class="bar-r"><div class="bar-val">${fmt(c)}</div><div class="bar-d ${cls}">${ps}</div></div>
       </div>
       <div class="bar-track">
         <div class="bar-fill-prev" style="width:${pw}%"></div>
-        <div class="bar-fill-curr" style="width:0%"  data-w="${cw}"></div>
+        <div class="bar-fill-curr" style="width:0%" data-w="${cw}"></div>
       </div>
     </div>`;
   }).join('');
 }
-barRows(channels, channels[0].c, document.getElementById('ch-bars'));
+barRows(channels,channels[0].c,document.getElementById('ch-bars'));
+barRows([
+  {n:'/',c:56573,p:56729},{n:'/ai-bot-traffic/',c:25081,p:null},
+  {n:'/wordpress-hosting/',c:20251,p:15578},{n:'/pricing/',c:12472,p:13787},
+  {n:'/es/trafico-ia-bots/',c:11040,p:null},{n:'/es/proteccion-contra-bots/',c:10424,p:10},
+  {n:'/add-ons/kinsta-auto-updates/',c:9682,p:14447},{n:'/kinsta-support/',c:9079,p:15163},
+  {n:'/blog/bandwidth-based-plans/',c:9031,p:11379},{n:'/clients/',c:8745,p:25450},
+],56573,document.getElementById('pg-bars'));
 
-// ── Top pages ──────────────────────────────────────────
-const pages=[
-  {n:'/',                               c:56573, p:56729},
-  {n:'/ai-bot-traffic/',               c:25081, p:null,  href:'/ai-bot-traffic/'},
-  {n:'/wordpress-hosting/',            c:20251, p:15578, href:'/wordpress-hosting/'},
-  {n:'/pricing/',                      c:12472, p:13787, href:'/pricing/'},
-  {n:'/es/trafico-ia-bots/',           c:11040, p:null,  href:'/es/trafico-ia-bots/'},
-  {n:'/es/proteccion-contra-bots/',    c:10424, p:10},
-  {n:'/add-ons/kinsta-auto-updates/',  c:9682,  p:14447},
-  {n:'/kinsta-support/',               c:9079,  p:15163},
-  {n:'/blog/bandwidth-based-plans/',   c:9031,  p:11379},
-  {n:'/clients/',                      c:8745,  p:25450},
-];
-barRows(pages, pages[0].c, document.getElementById('pg-bars'));
-
-// ── Key intent pages table ──────────────────────────────
-const keyPages=[
-  {u:'/wordpress-hosting/',           c:20251, p:15578},
-  {u:'/pricing/',                     c:12472, p:13787},
-  {u:'/add-ons/kinsta-auto-updates/', c:9682,  p:14447},
-  {u:'/cloudways-alternative/',       c:6625,  p:1589},
-  {u:'/signup/wp/',                   c:4439,  p:4370},
-  {u:'/agency-partner-program/',      c:3853,  p:4122},
-  {u:'/kinsta-reviews/',              c:2459,  p:3089},
-  {u:'/first-month-free/',            c:1629,  p:1234},
-  {u:'/contact-us/',                  c:1058,  p:1137},
-  {u:'/affiliates/',                  c:1382,  p:1366},
-  {u:'/talk-to-sales/',               c:456,   p:459},
-  {u:'/cloudflare-integration/',      c:308,   p:429},
-];
-document.getElementById('kp-tbody').innerHTML = keyPages.map(r=>{
+// ── Key pages table ──────────────────────────────────────
+document.getElementById('kp-tbody').innerHTML=[
+  {u:'/wordpress-hosting/',c:20251,p:15578},
+  {u:'/pricing/',c:12472,p:13787},
+  {u:'/add-ons/kinsta-auto-updates/',c:9682,p:14447},
+  {u:'/cloudways-alternative/',c:6625,p:1589},
+  {u:'/signup/wp/',c:4439,p:4370},
+  {u:'/agency-partner-program/',c:3853,p:4122},
+  {u:'/kinsta-reviews/',c:2459,p:3089},
+  {u:'/first-month-free/',c:1629,p:1234},
+  {u:'/affiliates/',c:1382,p:1366},
+  {u:'/contact-us/',c:1058,p:1137},
+  {u:'/talk-to-sales/',c:456,p:459},
+  {u:'/cloudflare-integration/',c:308,p:429},
+].map(r=>{
   const pct=r.p?(((r.c-r.p)/r.p)*100):null;
   const dir=pct===null?'new':pct>=0?`+${pct.toFixed(1)}%`:`${pct.toFixed(1)}%`;
   const cls=pct===null?'new':pct>=0?'up':'down';
-  return `<tr>
-    <td class="url">${r.u}</td>
-    <td class="r">${fmt(r.c)}</td>
-    <td class="r">${r.p?fmt(r.p):'—'}</td>
-    <td class="r ${cls}">${dir}</td>
-  </tr>`;
+  return `<tr><td class="url">${r.u}</td><td class="r">${fmt(r.c)}</td><td class="r">${r.p?fmt(r.p):'—'}</td><td class="r ${cls}">${dir}</td></tr>`;
 }).join('');
 
-// ── GSC Top Keywords ─────────────────────────────────────
-const kwAll=[
-  {q:'kinsta',                     cl:12118, im:26438, pos:1.3},
-  {q:'xnxx server ip not found',   cl:3836,  im:30734, pos:1.4},
-  {q:'kinsta login',               cl:2475,  im:3248,  pos:1.8},
-  {q:'dns_probe_finished_nxdomain',cl:1065,  im:252440,pos:9.4},
-  {q:'err_too_many_redirects',     cl:1044,  im:58279, pos:5.1},
-  {q:'err_ssl_protocol_error',     cl:994,   im:64235, pos:7.2},
-  {q:'検索エンジン',                 cl:936,   im:29454, pos:6.9},
-  {q:'err_ssl_protocol_error (chrome)',cl:879,im:19587,pos:5.0},
-  {q:'kinsta hosting',             cl:633,   im:4165,  pos:1.4},
-  {q:'mykinsta',                   cl:613,   im:1026,  pos:2.8},
-  {q:'err_cache_miss',             cl:601,   im:85139, pos:5.5},
-  {q:'err_name_not_resolved',      cl:583,   im:48359, pos:7.2},
-  {q:'net::err_cert_authority_invalid',cl:495,im:19066,pos:6.7},
-  {q:'err_connection_refused',     cl:445,   im:52236, pos:6.9},
-  {q:'motori di ricerca',          cl:435,   im:6166,  pos:8.6},
+// ── Top organic movers ───────────────────────────────────
+const gainers=[
+  {u:'/',abs:1106,pct:9.1},{u:'/jp/blog/alternative-search-engines/',abs:504,pct:19.2},
+  {u:'/es/blog/err_too_many_redirects/',abs:494,pct:50.5},{u:'/jp/blog/video-hosting/',abs:419,pct:93.3},
+  {u:'/blog/server-ip-address-could-not-be-found/',abs:336,pct:7.0},{u:'/jp/blog/err_name_not_resolved/',abs:328,pct:82.2},
+  {u:'/jp/blog/dns_probe_finished_nxdomain/',abs:310,pct:83.8},{u:'/blog/find-email-address/',abs:289,pct:85.0},
 ];
+const losers=[
+  {u:'/blog/err_ssl_protocol_error/',abs:-4034,pct:-28.5},
+  {u:'/blog/aw-snap-chrome-error/',abs:-574,pct:-79.1},
+  {u:'/jp/blog/504-gateway-timeout/',abs:-558,pct:-37.6},
+  {u:'/fr/blog/400-bad-request/',abs:-469,pct:-70.0},
+  {u:'/fr/blog/polices-caracteres-web-safe/',abs:-352,pct:-70.3},
+  {u:'/it/blog/svuotare-cache-dns/',abs:-333,pct:-38.9},
+  {u:'/jp/blog/wordpress-7-0/',abs:-331,pct:-74.0},
+  {u:'/es/blog/linux-comandos/',abs:-323,pct:-37.1},
+];
+function moverRows(items,el,dir){
+  el.innerHTML=items.map(r=>`
+    <div class="mover-row">
+      <div class="mover-url">${r.u}</div>
+      <div class="mover-abs ${dir}">${dir==='gain'?'+':''}${fmt(r.abs)}</div>
+      <div class="mover-pct">${r.pct>0?'+':''}${r.pct}%</div>
+    </div>`).join('');
+}
+moverRows(gainers,document.getElementById('movers-gain'),'gain');
+moverRows(losers, document.getElementById('movers-lose'),'lose');
+
+// ── Keywords ─────────────────────────────────────────────
 function posPill(pos){
-  const p=parseFloat(pos);
-  const cls=p<=3?'top':p<=10?'mid':'low';
+  const p=parseFloat(pos), cls=p<=3?'top':p<=10?'mid':'low';
   return `<span class="pos-pill ${cls}">#${p.toFixed(1)}</span>`;
 }
-function kwRows(items, tbodyId) {
-  document.getElementById(tbodyId).innerHTML = items.map(r=>`
+function kwRows(items,id){
+  document.getElementById(id).innerHTML=items.map(r=>`
     <tr>
       <td class="kw-term">${r.q}</td>
       <td class="r">${posPill(r.pos)}</td>
@@ -731,69 +826,67 @@ function kwRows(items, tbodyId) {
       <td class="r">${fmt(r.cl)}</td>
     </tr>`).join('');
 }
-kwRows(kwAll, 'kw-all-tbody');
+kwRows([
+  {q:'kinsta',cl:12118,im:26438,pos:1.3},{q:'xnxx server IP error',cl:3836,im:30734,pos:1.4},
+  {q:'kinsta login',cl:2475,im:3248,pos:1.8},{q:'dns_probe_finished_nxdomain',cl:1065,im:252440,pos:9.4},
+  {q:'err_too_many_redirects',cl:1044,im:58279,pos:5.1},{q:'err_ssl_protocol_error',cl:994,im:64235,pos:7.2},
+  {q:'検索エンジン',cl:936,im:29454,pos:6.9},{q:'err_ssl_protocol_error (chrome)',cl:879,im:19587,pos:5.0},
+  {q:'kinsta hosting',cl:633,im:4165,pos:1.4},{q:'mykinsta',cl:613,im:1026,pos:2.8},
+  {q:'err_cache_miss',cl:601,im:85139,pos:5.5},{q:'err_name_not_resolved',cl:583,im:48359,pos:7.2},
+  {q:'net::err_cert_authority_invalid',cl:495,im:19066,pos:6.7},{q:'err_connection_refused',cl:445,im:52236,pos:6.9},
+  {q:'motori di ricerca',cl:435,im:6166,pos:8.6},
+],'kw-all-tbody');
+kwRows([
+  {q:'kinsta affiliate program',cl:348,im:782,pos:2.8},{q:'kinsta pricing',cl:298,im:1149,pos:1.0},
+  {q:'kinsta',cl:225,im:41294,pos:1.0},{q:'kinsta plans',cl:107,im:569,pos:1.0},
+  {q:'kinsta wordpress hosting',cl:65,im:1255,pos:2.4},{q:'kinsta affiliate',cl:64,im:149,pos:1.0},
+  {q:'kinsta hosting',cl:63,im:6330,pos:1.0},{q:'kinsta hosting plans',cl:40,im:303,pos:1.0},
+  {q:'kinsta price',cl:22,im:187,pos:1.0},{q:'kinsta affiliate login',cl:16,im:19,pos:3.6},
+  {q:'kinsta cloudflare',cl:15,im:140,pos:2.3},{q:'kinsta support',cl:14,im:125,pos:2.2},
+  {q:'kinsta plan',cl:14,im:14,pos:1.0},{q:'kinsta pricing plans',cl:11,im:45,pos:1.0},
+  {q:'kinsta agency',cl:10,im:30,pos:2.2},
+],'kw-key-tbody');
 
-// ── Key intent page keywords (GSC filtered) ─────────────
-const kwKey=[
-  {q:'kinsta affiliate program',   cl:348, im:782,  pos:2.8},
-  {q:'kinsta pricing',             cl:298, im:1149, pos:1.0},
-  {q:'kinsta',                     cl:225, im:41294,pos:1.0},
-  {q:'kinsta plans',               cl:107, im:569,  pos:1.0},
-  {q:'kinsta wordpress hosting',   cl:65,  im:1255, pos:2.4},
-  {q:'kinsta affiliate',           cl:64,  im:149,  pos:1.0},
-  {q:'kinsta hosting',             cl:63,  im:6330, pos:1.0},
-  {q:'kinsta hosting plans',       cl:40,  im:303,  pos:1.0},
-  {q:'kinsta price',               cl:22,  im:187,  pos:1.0},
-  {q:'kinsta affiliate login',     cl:16,  im:19,   pos:3.6},
-  {q:'kinsta cloudflare',          cl:15,  im:140,  pos:2.3},
-  {q:'kinsta support',             cl:14,  im:125,  pos:2.2},
-  {q:'kinsta plan',                cl:14,  im:14,   pos:1.0},
-  {q:'kinsta pricing plans',       cl:11,  im:45,   pos:1.0},
-  {q:'kinsta agency',              cl:10,  im:30,   pos:2.2},
-];
-kwRows(kwKey, 'kw-key-tbody');
-
-// ── Revenue (merged bandwidth) ────────────────────────────
-const revItems=[
-  // {name, currRev, currUnits, prevRev, prevUnits}
-  {n:'WP 2',        cr:25395, cu:352, pr:23715, pu:315},  // WP 2 + WP 2 Bandwidth merged
-  {n:'Single 20GB', cr:18550, cu:566, pr:16765, pu:517},  // Single 20GB + Bandwidth merged
-  {n:'addon',       cr:8261,  cu:149, pr:6990,  pu:148},
-  {n:'WP 40',       cr:8800,  cu:8,   pr:2805,  pu:null}, // WP 40 Visits + Bandwidth (new in curr period)
-  {n:'Single 315k', cr:3730,  cu:7,   pr:1845,  pu:6},
-  {n:'WP 20',       cr:3540,  cu:7,   pr:4080,  pu:8},    // WP 20 Bandwidth curr / WP 20 Visits prev
-  {n:'WP 10',       cr:3520,  cu:12,  pr:2510,  pu:null}, // WP 10 Visits + WP 10 Bandwidth prev
-];
-document.getElementById('rev-tbody').innerHTML = revItems.map(r=>{
-  const revPct=(((r.cr-r.pr)/r.pr)*100).toFixed(1);
-  const revCls=parseFloat(revPct)>=0?'up':'down';
-  const revDir=parseFloat(revPct)>=0?'+':'';
-  let unitPct='', unitCls='', unitDir='';
+// ── Revenue ──────────────────────────────────────────────
+document.getElementById('rev-tbody').innerHTML=[
+  {n:'WP 2',        cr:25395,cu:352,pr:23715,pu:315},
+  {n:'Single 20GB', cr:18550,cu:566,pr:16765,pu:517},
+  {n:'addon',       cr:8261, cu:149,pr:6990, pu:148},
+  {n:'WP 40',       cr:8800, cu:8,  pr:2805, pu:null},
+  {n:'Single 315k', cr:3730, cu:7,  pr:1845, pu:6},
+  {n:'WP 20',       cr:3540, cu:7,  pr:4080, pu:8},
+  {n:'WP 10',       cr:3520, cu:12, pr:2510, pu:null},
+].map(r=>{
+  const rp=(((r.cr-r.pr)/r.pr)*100).toFixed(1);
+  const rc=parseFloat(rp)>=0?'up':'down', rd=parseFloat(rp)>=0?'+':'';
+  let up='',uc='',ud='';
   if(r.pu!==null){
     const u=(((r.cu-r.pu)/r.pu)*100).toFixed(1);
-    unitPct=u; unitCls=parseFloat(u)>=0?'up':'down'; unitDir=parseFloat(u)>=0?'+':'';
+    up=u; uc=parseFloat(u)>=0?'up':'down'; ud=parseFloat(u)>=0?'+':'';
   }
   return `<tr>
     <td>${r.n}</td>
     <td class="rev-spacer r">${fmt(r.cu)}</td>
-    <td class="rev-spacer r ${unitCls}">${r.pu!==null?unitDir+unitPct+'%':'—'}</td>
+    <td class="rev-spacer r ${uc}">${r.pu!==null?ud+up+'%':'—'}</td>
     <td class="rev-spacer r">$${fmt(r.cr)}</td>
-    <td class="rev-spacer r ${revCls}">${revDir}${revPct}%</td>
+    <td class="rev-spacer r ${rc}">${rd}${rp}%</td>
   </tr>`;
 }).join('');
 
 // ── Init ─────────────────────────────────────────────────
-window.addEventListener('load', () => {
+window.addEventListener('load',()=>{
   renderChart();
-  // Animate bar fills
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.bar-fill-curr').forEach(b => {
-      const w = b.dataset.w;
-      setTimeout(() => { b.style.width = w + '%'; b.style.transition='width .55s cubic-bezier(.4,0,.2,1)'; }, 80);
-    });
+  requestAnimationFrame(()=>{
+    setTimeout(()=>{
+      document.querySelectorAll('.bar-fill-curr,.dev-fill').forEach(b=>{
+        const w=b.dataset.w;
+        b.style.transition='width .55s cubic-bezier(.4,0,.2,1)';
+        b.style.width=w+'%';
+      });
+    },80);
   });
 });
-window.addEventListener('resize', renderChart);
+window.addEventListener('resize',renderChart);
 </script>
 </body>
 </html>
