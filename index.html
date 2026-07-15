@@ -380,9 +380,9 @@ body {
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Key Intent Pages</div>
-      <div class="kpi-val">64,614</div>
-      <div class="kpi-foot"><span class="delta up">▲ 4.9%</span><span class="kpi-src">Google Analytics</span></div>
-      <div class="kpi-sub">sessions across 12 key pages</div>
+      <div class="kpi-val">72,145</div>
+      <div class="kpi-foot"><span class="delta up">▲ 8.5%</span><span class="kpi-src">Google Analytics</span></div>
+      <div class="kpi-sub">sessions across 19 key pages</div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Key Chat Pages</div>
@@ -517,6 +517,23 @@ body {
         </tr>
       </thead>
       <tbody id="kp-tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- Multilingual commercial pages -->
+  <div class="section full-panel">
+    <div class="panel-title">Multilingual Commercial Pages — Sessions &nbsp;·&nbsp; Google Analytics</div>
+    <table class="kp-table">
+      <thead>
+        <tr>
+          <th style="width:72px">Type</th>
+          <th>Page</th>
+          <th class="r">Sessions</th>
+          <th class="r">Prior</th>
+          <th class="r">Change</th>
+        </tr>
+      </thead>
+      <tbody id="ml-tbody"></tbody>
     </table>
   </div>
 
@@ -771,17 +788,52 @@ document.getElementById('kp-tbody').innerHTML=[
   {u:'/cloudways-alternative/',c:6625,p:1589},
   {u:'/signup/wp/',c:4439,p:4370},
   {u:'/agency-partner-program/',c:3853,p:4122},
+  {u:'/bot-protection/',c:3374,p:520},
   {u:'/kinsta-reviews/',c:2459,p:3089},
   {u:'/first-month-free/',c:1629,p:1234},
+  {u:'/wordpress-hosting/woocommerce/',c:1696,p:1699},
   {u:'/affiliates/',c:1382,p:1366},
+  {u:'/wordpress-hosting/migration/',c:1377,p:1438},
   {u:'/contact-us/',c:1058,p:1137},
   {u:'/talk-to-sales/',c:456,p:459},
+  {u:'/kinsta-alternatives/',c:327,p:460},
   {u:'/cloudflare-integration/',c:308,p:429},
+  {u:'/wordpress-hosting/enterprise/',c:298,p:348},
+  {u:'/siteground-alternative/',c:243,p:160},
+  {u:'/wp-engine-alternative/',c:216,p:289},
 ].map(r=>{
   const pct=r.p?(((r.c-r.p)/r.p)*100):null;
   const dir=pct===null?'new':pct>=0?`+${pct.toFixed(1)}%`:`${pct.toFixed(1)}%`;
   const cls=pct===null?'new':pct>=0?'up':'down';
   return `<tr><td class="url">${r.u}</td><td class="r">${fmt(r.c)}</td><td class="r">${r.p?fmt(r.p):'—'}</td><td class="r ${cls}">${dir}</td></tr>`;
+}).join('');
+
+// ── Multilingual commercial pages ────────────────────────
+document.getElementById('ml-tbody').innerHTML=[
+  {t:'Homepage',u:'/es/',c:1523,p:981},
+  {t:'Homepage',u:'/jp/',c:1522,p:1435},
+  {t:'Homepage',u:'/fr/',c:1244,p:790},
+  {t:'Homepage',u:'/nl/',c:826,p:322},
+  {t:'Homepage',u:'/de/',c:703,p:189},
+  {t:'Homepage',u:'/pt/',c:410,p:397},
+  {t:'Homepage',u:'/it/',c:374,p:312},
+  {t:'Pricing',u:'/jp/pricing/',c:570,p:694},
+  {t:'Pricing',u:'/es/precios/',c:549,p:539},
+  {t:'Pricing',u:'/fr/tarifs/',c:288,p:338},
+  {t:'Pricing',u:'/de/preise/',c:205,p:162},
+  {t:'Hosting',u:'/jp/wordpress-hosting/',c:469,p:597},
+  {t:'Hosting',u:'/es/wordpress-hosting/',c:407,p:514},
+  {t:'Hosting',u:'/fr/hebergement-wordpress/',c:317,p:249},
+  {t:'Signup',u:'/es/suscripcion/wp/',c:363,p:315},
+  {t:'Signup',u:'/jp/signup/wp/',c:290,p:347},
+].map((r,i,arr)=>{
+  const pct=(((r.c-r.p)/r.p)*100);
+  const dir=pct>=0?`+${pct.toFixed(1)}%`:`${pct.toFixed(1)}%`;
+  const cls=pct>=0?'up':'down';
+  const typeCell=i===0||r.t!==arr[i-1].t
+    ?`<td class="url" rowspan="${arr.filter(x=>x.t===r.t).length}" style="color:var(--teal);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;vertical-align:top;padding-top:10px">${r.t}</td>`
+    :'';
+  return `<tr>${typeCell}<td class="url">${r.u}</td><td class="r">${fmt(r.c)}</td><td class="r">${fmt(r.p)}</td><td class="r ${cls}">${dir}</td></tr>`;
 }).join('');
 
 // ── Top organic movers ───────────────────────────────────
