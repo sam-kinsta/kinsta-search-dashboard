@@ -8,23 +8,22 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #0D1117;
-  --surface: #111827;
-  --surface-2: #172032;
-  --border: #1E2D42;
-  --border-2: #253651;
-  --teal: #19BBA0;
-  --teal-dim: rgba(25,187,160,0.1);
-  --teal-line: rgba(25,187,160,0.3);
-  --up: #10B981;
-  --up-bg: rgba(16,185,129,0.12);
-  --down: #F43F5E;
-  --down-bg: rgba(244,63,94,0.12);
-  --neutral: #7D8FA8;
-  --text: #C9D8EE;
-  --text-2: #7D8FA8;
-  --text-3: #4A5F78;
-  --label: #3D5270;
+  --bg:       #0D1117;
+  --surface:  #111827;
+  --surface2: #16203A;
+  --border:   #1E2D42;
+  --border2:  #253A55;
+  --teal:     #1EC8AC;
+  --teal-dim: rgba(30,200,172,0.1);
+  --up:       #10CF8E;
+  --up-bg:    rgba(16,207,142,0.11);
+  --down:     #FF5473;
+  --down-bg:  rgba(255,84,115,0.11);
+  --neutral:  #7A9AB8;
+  --text:     #EEF3FF;
+  --text2:    #A8BED8;
+  --text3:    #7A9AB8;
+  --text4:    #506680;
 }
 html { font-size: 14px; }
 body {
@@ -34,7 +33,7 @@ body {
   line-height: 1.5;
   min-height: 100vh;
 }
-.wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px 64px; }
+.wrap { max-width: 1300px; margin: 0 auto; padding: 0 24px 72px; }
 
 /* ── Header ── */
 .header {
@@ -43,433 +42,240 @@ body {
   justify-content: space-between;
   padding: 24px 0 20px;
   border-bottom: 1px solid var(--border);
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 16px; flex-wrap: wrap;
 }
-.header-left { display: flex; align-items: baseline; gap: 12px; }
-.logo-mark {
-  display: inline-block;
-  width: 22px; height: 22px;
-  background: var(--teal);
-  border-radius: 3px;
-  flex-shrink: 0;
-  position: relative;
-  top: 1px;
-}
-.header h1 {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--text);
-}
-.header-period {
-  font-size: 0.786rem;
-  color: var(--text-2);
-  letter-spacing: 0.01em;
-}
-.header-meta {
-  font-size: 0.714rem;
-  color: var(--text-3);
-  font-variant-numeric: tabular-nums;
-}
+.hd-left { display: flex; align-items: center; gap: 10px; }
+.logo { width: 20px; height: 20px; background: var(--teal); border-radius: 3px; flex-shrink: 0; }
+.hd-title { font-size: 0.9rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+.hd-period { font-size: 0.786rem; color: var(--text2); margin-left: 4px; }
+.hd-meta { font-size: 0.686rem; color: var(--text3); font-variant-numeric: tabular-nums; }
 
 /* ── Section ── */
-.section { margin-top: 32px; }
-.section-label {
-  font-size: 0.643rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin-bottom: 12px;
+.section { margin-top: 28px; }
+.section-lbl {
+  font-size: 0.629rem; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--text3); margin-bottom: 10px;
 }
 
-/* ── KPI Grid ── */
+/* ── KPI Grid 3×3 ── */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
   border-radius: 4px;
   overflow: hidden;
-  margin-top: 24px;
+  margin-top: 20px;
 }
-.kpi-tile {
+.kpi {
   background: var(--surface);
-  padding: 18px 20px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  padding: 16px 18px 14px;
+  display: flex; flex-direction: column; gap: 5px;
 }
-.kpi-label {
-  font-size: 0.643rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-3);
+.kpi-lbl {
+  font-size: 0.629rem; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--text3);
 }
-.kpi-value {
-  font-size: 1.571rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
+.kpi-val {
+  font-size: 1.5rem; font-weight: 600;
+  letter-spacing: -0.03em; color: var(--text);
+  font-variant-numeric: tabular-nums; line-height: 1;
 }
-.kpi-footer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 2px;
+.kpi-foot {
+  display: flex; align-items: center; gap: 7px; margin-top: 1px;
 }
 .delta {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  font-size: 0.714rem;
-  font-weight: 600;
+  display: inline-flex; align-items: center; gap: 2px;
+  font-size: 0.7rem; font-weight: 700;
   font-variant-numeric: tabular-nums;
-  padding: 2px 7px;
-  border-radius: 3px;
-  line-height: 1.4;
+  padding: 1px 6px; border-radius: 3px; line-height: 1.5;
 }
-.delta.up { color: var(--up); background: var(--up-bg); }
+.delta.up   { color: var(--up);   background: var(--up-bg); }
 .delta.down { color: var(--down); background: var(--down-bg); }
-.delta.flat { color: var(--neutral); background: rgba(125,143,168,0.1); }
-.kpi-source { font-size: 0.643rem; color: var(--text-3); }
+.delta.flat { color: var(--neutral); background: rgba(122,154,184,0.1); }
+.kpi-src { font-size: 0.643rem; color: var(--text3); }
+.kpi-sub { font-size: 0.643rem; color: var(--text3); }
 
 /* ── Chart ── */
-.chart-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  gap: 12px;
-  flex-wrap: wrap;
+.chart-head {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  margin-bottom: 14px;
 }
-.chart-legend {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.chart-legend { display: flex; align-items: center; gap: 16px; }
+.leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--text2); }
+.leg-line { width: 22px; height: 2px; border-radius: 1px; }
+.leg-line.curr { background: var(--teal); }
+.leg-line.prev { border-top: 2px dashed var(--border2); height: 0; }
+.chart-toggle { display: flex; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.tog {
+  background: none; border: none; border-right: 1px solid var(--border);
+  color: var(--text2); font-size: 0.7rem; font-family: inherit;
+  padding: 4px 11px; cursor: pointer; transition: background .12s, color .12s;
 }
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.714rem;
-  color: var(--text-2);
-}
-.legend-line {
-  width: 24px;
-  height: 2px;
-  border-radius: 1px;
-}
-.legend-line.current { background: var(--teal); }
-.legend-line.prev { background: var(--border-2); border-top: 2px dashed var(--border-2); height: 0; }
-.chart-toggle {
-  display: flex;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  overflow: hidden;
-}
-.toggle-btn {
-  background: none;
-  border: none;
-  color: var(--text-2);
-  font-size: 0.714rem;
-  font-family: inherit;
-  padding: 5px 12px;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-  border-right: 1px solid var(--border);
-}
-.toggle-btn:last-child { border-right: none; }
-.toggle-btn.active {
-  background: var(--teal-dim);
-  color: var(--teal);
-  font-weight: 600;
-}
-.toggle-btn:hover:not(.active) { background: var(--surface-2); color: var(--text); }
+.tog:last-child { border-right: none; }
+.tog.on { background: var(--teal-dim); color: var(--teal); font-weight: 600; }
+.tog:hover:not(.on) { background: var(--surface2); color: var(--text); }
 .chart-wrap {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 20px 0 0;
-  overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 4px; padding: 18px 0 0; overflow: hidden;
 }
-#trend-canvas {
-  display: block;
-  width: 100%;
-  cursor: crosshair;
+#chart { display: block; width: 100%; cursor: crosshair; }
+.spike-note {
+  font-size: 0.629rem; color: var(--text3);
+  padding: 8px 20px 12px;
+  display: flex; align-items: flex-start; gap: 6px;
+  border-top: 1px solid var(--border); margin-top: 6px;
 }
-.chart-tooltip {
-  position: absolute;
-  background: var(--surface-2);
-  border: 1px solid var(--border-2);
-  border-radius: 3px;
-  padding: 8px 12px;
-  font-size: 0.714rem;
-  line-height: 1.7;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.1s;
-  z-index: 10;
-  min-width: 160px;
-  color: var(--text);
-}
+.spike-dot-note { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 2px; }
 .chart-outer { position: relative; }
-.tooltip-label { color: var(--text-2); font-size: 0.643rem; margin-bottom: 2px; }
-.tooltip-row { display: flex; justify-content: space-between; gap: 16px; font-variant-numeric: tabular-nums; }
-.tooltip-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 4px; position: relative; top: 0px; }
+.tt {
+  position: absolute; background: var(--surface2);
+  border: 1px solid var(--border2); border-radius: 3px;
+  padding: 8px 11px; font-size: 0.7rem; line-height: 1.75;
+  pointer-events: none; opacity: 0; transition: opacity .08s;
+  z-index: 10; min-width: 152px; color: var(--text);
+}
+.tt-lbl { color: var(--text2); font-size: 0.629rem; margin-bottom: 1px; }
+.tt-row { display: flex; justify-content: space-between; gap: 14px; font-variant-numeric: tabular-nums; }
+.tt-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
 
-/* ── Two-col grid ── */
+/* ── Panels ── */
 .two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
 }
-.panel {
-  background: var(--surface);
-  padding: 20px 24px;
-}
+.panel { background: var(--surface); padding: 18px 22px; }
 .panel-title {
-  font-size: 0.714rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
+  font-size: 0.629rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text3); margin-bottom: 14px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.full-panel {
+  background: var(--surface);
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: 18px 22px;
 }
 
 /* ── Bar list ── */
-.bar-list { display: flex; flex-direction: column; gap: 10px; }
-.bar-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.bar-list { display: flex; flex-direction: column; gap: 9px; }
+.bar-row { display: flex; flex-direction: column; gap: 3px; }
+.bar-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.bar-lbl {
+  font-size: 0.786rem; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 62%;
 }
-.bar-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
-}
-.bar-label {
-  font-size: 0.786rem;
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 65%;
-}
-.bar-label a {
-  color: inherit;
-  text-decoration: none;
-}
-.bar-label a:hover { color: var(--teal); }
-.bar-right {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  flex-shrink: 0;
-}
-.bar-value {
-  font-size: 0.786rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  color: var(--text);
-}
-.bar-delta {
-  font-size: 0.643rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  min-width: 44px;
-  text-align: right;
-}
-.bar-delta.up { color: var(--up); }
-.bar-delta.down { color: var(--down); }
-.bar-delta.flat { color: var(--neutral); }
-.bar-delta.new { color: var(--teal); }
-.bar-track {
-  height: 3px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-  position: relative;
-}
-.bar-fill {
-  height: 100%;
-  border-radius: 2px;
-  background: var(--teal);
-  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
-}
-.bar-fill.prev {
-  background: var(--border-2);
-  position: absolute;
-  top: 0; left: 0;
-}
-.bar-fill.curr { position: relative; z-index: 1; }
-
-/* ── Full-width panel ── */
-.full-panel {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 20px 24px;
-}
-
-/* ── Keywords + Revenue side-by-side ── */
-.three-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-}
+.bar-lbl a { color: inherit; text-decoration: none; }
+.bar-lbl a:hover { color: var(--teal); }
+.bar-r { display: flex; align-items: baseline; gap: 7px; flex-shrink: 0; }
+.bar-val { font-size: 0.786rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text); }
+.bar-d { font-size: 0.643rem; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 42px; text-align: right; }
+.bar-d.up { color: var(--up); }
+.bar-d.down { color: var(--down); }
+.bar-d.flat { color: var(--neutral); }
+.bar-d.new { color: var(--teal); }
+.bar-track { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; position: relative; }
+.bar-fill-prev { position: absolute; top: 0; left: 0; height: 100%; border-radius: 2px; background: var(--border2); }
+.bar-fill-curr { position: relative; z-index: 1; height: 100%; border-radius: 2px; background: var(--teal); transition: width .55s cubic-bezier(.4,0,.2,1); }
 
 /* ── Key pages table ── */
-.key-pages-grid {
-  display: grid;
-  grid-template-columns: 1fr repeat(4, auto);
-  gap: 0;
-}
-.kp-header, .kp-cell {
-  font-size: 0.714rem;
-  font-variant-numeric: tabular-nums;
-  padding: 7px 0;
+.kp-table { width: 100%; border-collapse: collapse; }
+.kp-table th {
+  font-size: 0.629rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text3); text-align: left; padding: 0 0 10px;
   border-bottom: 1px solid var(--border);
 }
-.kp-header {
-  font-size: 0.643rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
-.kp-cell { color: var(--text); }
-.kp-cell.url {
-  padding-right: 16px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 300px;
-}
-.kp-cell.num, .kp-header.num { text-align: right; padding-left: 16px; }
-.kp-cell.delta-cell { padding-left: 16px; text-align: right; }
-.kp-cell.delta-cell.up { color: var(--up); font-weight: 600; }
-.kp-cell.delta-cell.down { color: var(--down); font-weight: 600; }
-.kp-row:last-child .kp-cell { border-bottom: none; }
-
-/* ── Keyword rows with position ── */
-.kw-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto auto;
-  gap: 0 16px;
-  align-items: center;
-}
-.kw-term { font-size: 0.786rem; color: var(--text); }
-.kw-pos {
-  font-size: 0.714rem;
+.kp-table th.r { text-align: right; padding-left: 18px; }
+.kp-table td {
+  font-size: 0.771rem; color: var(--text);
+  padding: 7px 0; border-bottom: 1px solid var(--border);
   font-variant-numeric: tabular-nums;
-  color: var(--text-2);
-  text-align: right;
-  min-width: 28px;
 }
-.pos-badge {
-  display: inline-block;
-  padding: 1px 6px;
-  border-radius: 2px;
-  font-size: 0.643rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  background: var(--teal-dim);
-  color: var(--teal);
-}
-.pos-badge.mid { background: rgba(251,191,36,0.1); color: #FBBF24; }
-.pos-badge.low { background: rgba(100,120,160,0.1); color: var(--neutral); }
-.kw-vol { font-size: 0.643rem; color: var(--text-3); text-align: right; min-width: 40px; font-variant-numeric: tabular-nums; }
-.kw-traffic { font-size: 0.786rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text); text-align: right; }
+.kp-table td.r { text-align: right; padding-left: 18px; }
+.kp-table td.url { max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kp-table tr:last-child td { border-bottom: none; }
+.kp-table td.up   { color: var(--up);   font-weight: 700; }
+.kp-table td.down { color: var(--down); font-weight: 700; }
+.kp-table td.new  { color: var(--teal); font-weight: 700; }
 
-/* ── Revenue rows ── */
-.rev-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 0 16px;
-  align-items: center;
-  padding: 7px 0;
+/* ── Keyword table ── */
+.kw-table { width: 100%; border-collapse: collapse; }
+.kw-table th {
+  font-size: 0.629rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text3); text-align: left; padding: 0 0 10px;
   border-bottom: 1px solid var(--border);
 }
-.rev-row:last-child { border-bottom: none; }
-.rev-name { font-size: 0.786rem; color: var(--text); }
-.rev-units { font-size: 0.643rem; color: var(--text-3); font-variant-numeric: tabular-nums; text-align: right; }
-.rev-amount { font-size: 0.786rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text); text-align: right; }
+.kw-table th.r { text-align: right; padding-left: 12px; }
+.kw-table td {
+  font-size: 0.771rem; color: var(--text);
+  padding: 6px 0; border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+}
+.kw-table td.r { text-align: right; padding-left: 12px; white-space: nowrap; }
+.kw-table tr:last-child td { border-bottom: none; }
+.kw-term { max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pos-pill {
+  display: inline-block; padding: 0 5px;
+  border-radius: 2px; font-size: 0.629rem; font-weight: 700;
+  font-variant-numeric: tabular-nums; line-height: 1.6;
+}
+.pos-pill.top  { background: var(--teal-dim); color: var(--teal); }
+.pos-pill.mid  { background: rgba(251,191,36,.1); color: #FBBF24; }
+.pos-pill.low  { background: rgba(122,154,184,.1); color: var(--neutral); }
 
-/* ── Spike annotation ── */
-.spike-note {
-  font-size: 0.643rem;
-  color: var(--text-3);
-  padding: 8px 20px 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-top: 1px solid var(--border);
-  margin-top: 4px;
+/* ── Revenue table ── */
+.rev-table { width: 100%; border-collapse: collapse; }
+.rev-table th {
+  font-size: 0.629rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text3); text-align: right; padding: 0 0 10px;
+  border-bottom: 1px solid var(--border);
 }
-.spike-dot {
-  width: 8px; height: 8px;
-  background: var(--teal);
-  border-radius: 50%;
-  flex-shrink: 0;
+.rev-table th:first-child { text-align: left; }
+.rev-table td {
+  font-size: 0.771rem; color: var(--text);
+  padding: 7px 0; border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums; text-align: right;
 }
+.rev-table td:first-child { text-align: left; }
+.rev-table tr:last-child td { border-bottom: none; }
+.rev-table td.up   { color: var(--up);   font-weight: 700; }
+.rev-table td.down { color: var(--down); font-weight: 700; }
+.rev-spacer { padding-left: 14px; }
 
 /* ── Footer ── */
 .footer {
-  margin-top: 48px;
-  padding-top: 24px;
+  margin-top: 48px; padding-top: 22px;
   border-top: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
 }
-.footer-block h4 {
-  font-size: 0.643rem;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin-bottom: 8px;
+.footer h4 {
+  font-size: 0.629rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text3); margin-bottom: 8px;
 }
-.footer-block p, .footer-block li {
-  font-size: 0.714rem;
-  color: var(--text-3);
-  line-height: 1.6;
-}
-.footer-block ul { padding-left: 0; list-style: none; }
-.footer-block li::before { content: '–  '; color: var(--label); }
+.footer ul { list-style: none; padding: 0; }
+.footer li { font-size: 0.7rem; color: var(--text3); line-height: 1.7; }
+.footer li::before { content: '– '; color: var(--text4); }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
-  .kpi-grid { grid-template-columns: repeat(3, 1fr); }
-  .two-col, .three-col { grid-template-columns: 1fr; }
+@media (max-width: 960px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-col { grid-template-columns: 1fr; }
   .footer { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .kpi-grid { grid-template-columns: 1fr 1fr; }
-  .kp-cell.num:nth-child(3), .kp-header.num:nth-child(3) { display: none; }
+  .kpi-grid { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .bar-fill { transition: none; }
+  .bar-fill-curr { transition: none; }
 }
 </style>
 </head>
@@ -478,139 +284,222 @@ body {
 
   <!-- Header -->
   <header class="header">
-    <div class="header-left">
-      <span class="logo-mark"></span>
-      <h1>kinsta.com — Organic Search</h1>
-      <span class="header-period">Jun 7 – Jul 6, 2026 &nbsp;vs&nbsp; May 8 – Jun 6, 2026</span>
+    <div class="hd-left">
+      <span class="logo"></span>
+      <span class="hd-title">kinsta.com — Organic Search</span>
+      <span class="hd-period">Jun 7 – Jul 6, 2026 &nbsp;vs&nbsp; May 8 – Jun 6, 2026</span>
     </div>
-    <div class="header-meta">Generated Jul 15, 2026 &nbsp;·&nbsp; Google Analytics 4 + Ahrefs</div>
+    <div class="hd-meta">Generated Jul 15, 2026 &nbsp;·&nbsp; Google Analytics 4 · Google Search Console · Ahrefs</div>
   </header>
 
-  <!-- KPI Tiles -->
-  <div class="kpi-grid">
-    <div class="kpi-tile">
-      <div class="kpi-label">Organic Sessions</div>
-      <div class="kpi-value">236,761</div>
-      <div class="kpi-footer">
+  <!-- KPI tiles (3 × 3) -->
+  <div class="kpi-grid" style="margin-top:24px">
+
+    <!-- Row 1: Traffic reach -->
+    <div class="kpi">
+      <div class="kpi-lbl">Organic Sessions</div>
+      <div class="kpi-val">236,761</div>
+      <div class="kpi-foot">
         <span class="delta down">▼ 2.4%</span>
-        <span class="kpi-source">Google Analytics</span>
+        <span class="kpi-src">Google Analytics</span>
       </div>
     </div>
-    <div class="kpi-tile">
-      <div class="kpi-label">Organic Traffic Est.</div>
-      <div class="kpi-value">315,960</div>
-      <div class="kpi-footer">
-        <span class="delta down">▼ 15.3%</span>
-        <span class="kpi-source">Ahrefs</span>
+    <div class="kpi">
+      <div class="kpi-lbl">Organic Clicks</div>
+      <div class="kpi-val">221,606</div>
+      <div class="kpi-foot">
+        <span class="delta down">▼ 9.5%</span>
+        <span class="kpi-src">Google Search Console</span>
       </div>
     </div>
-    <div class="kpi-tile">
-      <div class="kpi-label">Keywords Top 1–3</div>
-      <div class="kpi-value">13,758</div>
-      <div class="kpi-footer">
+    <div class="kpi">
+      <div class="kpi-lbl">Keywords — Top 1–3</div>
+      <div class="kpi-val">13,758</div>
+      <div class="kpi-foot">
         <span class="delta up">▲ 18.7%</span>
-        <span class="kpi-source">Ahrefs</span>
+        <span class="kpi-src">Ahrefs</span>
       </div>
     </div>
-    <div class="kpi-tile">
-      <div class="kpi-label">Total Ranking Kws</div>
-      <div class="kpi-value">39,058</div>
-      <div class="kpi-footer">
+
+    <!-- Row 2: SEO authority -->
+    <div class="kpi">
+      <div class="kpi-lbl">Total Ranking Keywords</div>
+      <div class="kpi-val">39,058</div>
+      <div class="kpi-foot">
         <span class="delta up">▲ 0.5%</span>
-        <span class="kpi-source">Ahrefs</span>
+        <span class="kpi-src">Ahrefs</span>
       </div>
     </div>
-    <div class="kpi-tile">
-      <div class="kpi-label">Referring Domains</div>
-      <div class="kpi-value">34,008</div>
-      <div class="kpi-footer">
+    <div class="kpi">
+      <div class="kpi-lbl">Referring Domains</div>
+      <div class="kpi-val">34,008</div>
+      <div class="kpi-foot">
         <span class="delta down">▼ 1.2%</span>
-        <span class="kpi-source">Ahrefs</span>
+        <span class="kpi-src">Ahrefs</span>
       </div>
     </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Key Intent Pages</div>
+      <div class="kpi-val">64,614</div>
+      <div class="kpi-foot">
+        <span class="delta up">▲ 4.9%</span>
+        <span class="kpi-src">Google Analytics</span>
+      </div>
+      <div class="kpi-sub">sessions across 12 key pages</div>
+    </div>
+
+    <!-- Row 3: Conversion signals -->
+    <div class="kpi">
+      <div class="kpi-lbl">Key Chat Pages</div>
+      <div class="kpi-val">1,514</div>
+      <div class="kpi-foot">
+        <span class="delta down">▼ 5.1%</span>
+        <span class="kpi-src">Google Analytics</span>
+      </div>
+      <div class="kpi-sub">/talk-to-sales/ + /contact-us/</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Purchases</div>
+      <div class="kpi-val">1,474</div>
+      <div class="kpi-foot">
+        <span class="delta up">▲ 7.7%</span>
+        <span class="kpi-src">Google Analytics</span>
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Item Revenue (MRR)</div>
+      <div class="kpi-val">$97,910</div>
+      <div class="kpi-foot">
+        <span class="delta up">▲ 5.8%</span>
+        <span class="kpi-src">Google Analytics</span>
+      </div>
+    </div>
+
   </div>
 
   <!-- Trend Chart -->
   <div class="section">
-    <div class="chart-header">
-      <div class="section-label" style="margin-bottom:0">Daily Sessions — kinsta.com</div>
-      <div style="display:flex;align-items:center;gap:20px;">
+    <div class="chart-head">
+      <div class="section-lbl" style="margin-bottom:0">Daily Sessions — kinsta.com (hostname filter applied)</div>
+      <div style="display:flex;align-items:center;gap:18px">
         <div class="chart-legend">
-          <div class="legend-item"><div class="legend-line current"></div> Jun 7–Jul 6</div>
-          <div class="legend-item"><div class="legend-line prev"></div> May 8–Jun 6</div>
+          <div class="leg-item"><div class="leg-line curr"></div> Jun 7–Jul 6</div>
+          <div class="leg-item"><div class="leg-line prev"></div> May 8–Jun 6</div>
         </div>
         <div class="chart-toggle">
-          <button class="toggle-btn active" data-metric="sessions">Sessions</button>
-          <button class="toggle-btn" data-metric="users">Users</button>
+          <button class="tog on" data-m="sessions">Sessions</button>
+          <button class="tog" data-m="users">Users</button>
         </div>
       </div>
     </div>
     <div class="chart-outer">
       <div class="chart-wrap">
-        <canvas id="trend-canvas" height="220"></canvas>
+        <canvas id="chart" height="218"></canvas>
         <div class="spike-note">
-          <div class="spike-dot"></div>
-          Jun 22 spike (30,324 sessions): launch of /ai-bot-traffic/ and Spanish bot-protection pages — new content, not a ranking event
+          <div class="spike-dot-note"></div>
+          <span><strong style="color:var(--text2)">Jun 22</strong> — Launch of <em>/ai-bot-traffic/</em>, <em>/es/trafico-ia-bots/</em>, and <em>/es/proteccion-contra-bots/</em>. Sessions spiked to 30,324 (+93% day-on-day) driven by social shares and direct links to new content — not a ranking event. GSC shows no position movement on this date (Google Analytics + Google Search Console).</span>
         </div>
       </div>
-      <div class="chart-tooltip" id="tooltip"></div>
+      <div class="tt" id="tt"></div>
     </div>
   </div>
 
-  <!-- Channel + Top Pages -->
+  <!-- Channel breakdown + Top pages -->
   <div class="section two-col">
     <div class="panel">
       <div class="panel-title">Sessions by Channel &nbsp;·&nbsp; Google Analytics</div>
-      <div class="bar-list" id="channel-bars"></div>
+      <div class="bar-list" id="ch-bars"></div>
     </div>
     <div class="panel">
       <div class="panel-title">Top Pages by Sessions &nbsp;·&nbsp; Google Analytics</div>
-      <div class="bar-list" id="page-bars"></div>
+      <div class="bar-list" id="pg-bars"></div>
     </div>
   </div>
 
-  <!-- Key Intent Pages -->
+  <!-- Key intent pages -->
   <div class="section full-panel">
-    <div class="panel-title">Key Intent Pages &nbsp;·&nbsp; Sessions — Google Analytics</div>
-    <div class="key-pages-grid" id="key-pages"></div>
+    <div class="panel-title">Key Intent Pages — Sessions &nbsp;·&nbsp; Google Analytics</div>
+    <table class="kp-table">
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th class="r">Sessions</th>
+          <th class="r">Prior</th>
+          <th class="r">Change</th>
+        </tr>
+      </thead>
+      <tbody id="kp-tbody"></tbody>
+    </table>
   </div>
 
-  <!-- Ahrefs Top Pages + Keywords -->
+  <!-- GSC Keywords (overall + key pages) -->
   <div class="section two-col">
     <div class="panel">
-      <div class="panel-title">Top Pages — Organic Estimate &nbsp;·&nbsp; Ahrefs</div>
-      <div class="bar-list" id="ahrefs-pages"></div>
+      <div class="panel-title">Top Keywords by Clicks &nbsp;·&nbsp; Google Search Console</div>
+      <table class="kw-table">
+        <thead>
+          <tr>
+            <th>Query</th>
+            <th class="r">Pos</th>
+            <th class="r">Impr</th>
+            <th class="r">Clicks</th>
+          </tr>
+        </thead>
+        <tbody id="kw-all-tbody"></tbody>
+      </table>
     </div>
     <div class="panel">
-      <div class="panel-title">Top Keywords &nbsp;·&nbsp; Ahrefs</div>
-      <div class="bar-list" id="keyword-list"></div>
+      <div class="panel-title">Keywords from Key Intent Pages &nbsp;·&nbsp; Google Search Console</div>
+      <table class="kw-table">
+        <thead>
+          <tr>
+            <th>Query</th>
+            <th class="r">Pos</th>
+            <th class="r">Impr</th>
+            <th class="r">Clicks</th>
+          </tr>
+        </thead>
+        <tbody id="kw-key-tbody"></tbody>
+      </table>
     </div>
   </div>
 
-  <!-- Item Revenue -->
+  <!-- Revenue (merged) -->
   <div class="section full-panel">
-    <div class="panel-title">Plan &amp; Add-on Revenue — Top Items &nbsp;·&nbsp; Google Analytics (all hostnames)</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 40px;" id="revenue-grid"></div>
+    <div class="panel-title">Plan Revenue — Top Items (Bandwidth variants merged) &nbsp;·&nbsp; Google Analytics (all hostnames)</div>
+    <table class="rev-table">
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th class="rev-spacer r">Units</th>
+          <th class="rev-spacer r">Unit Δ</th>
+          <th class="rev-spacer r">Revenue</th>
+          <th class="rev-spacer r">Rev Δ</th>
+        </tr>
+      </thead>
+      <tbody id="rev-tbody"></tbody>
+    </table>
   </div>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-block">
+    <div>
       <h4>Data Sources</h4>
       <ul>
-        <li>Google Analytics 4 (Property 254014305) — sessions, users, pages, channels, item revenue. Hostname filter: kinsta.com (except item revenue, which uses all hostnames). Staff sessions not filtered — may inflate some page metrics.</li>
-        <li>Ahrefs — organic traffic estimates, keyword rankings, referring domains, top pages. All figures are Ahrefs estimates, not actuals.</li>
-        <li>GSC daily click/impression data unavailable — Ahrefs project ID not configured for this run.</li>
+        <li>Google Analytics 4 (Property 254014305) — sessions, purchases, item revenue. Hostname filter: kinsta.com for session data; no filter for purchases and revenue.</li>
+        <li>Google Search Console — organic clicks, impressions, keyword positions. Site: kinsta.com. Data delayed 2–3 days.</li>
+        <li>Ahrefs — organic keyword count (top 1–3, total), referring domains. Point-in-time estimates, not 30-day sums.</li>
+        <li>Traffic annotations doc unavailable (requires Atlassian credentials not configured). Jun 22 event confirmed via GA4 + known content launch.</li>
       </ul>
     </div>
-    <div class="footer-block">
+    <div>
       <h4>Interpretation Notes</h4>
       <ul>
-        <li>Ahrefs "Organic Traffic Estimate" (315,960) is a monthly model snapshot, not a 30-day sum. GA4 "Organic Sessions" (236,761) is the actual 30-day count.</li>
-        <li>Top 1–3 keyword growth (+18.7%) alongside traffic decline suggests improving rankings on branded/navigational terms while high-volume informational blog content loses ground — consistent with the BOFU pivot.</li>
-        <li>Ahrefs traffic_diff_percent values are in basis points (÷ 100 = %).</li>
-        <li>Jun 22 session spike caused by new AI bot-traffic pages, not a ranking event.</li>
-        <li>"Unassigned" sessions in GA4 typically represent app or API traffic with missing UTM parameters.</li>
+        <li>Organic Sessions (GA4, −2.4%) and Organic Clicks (GSC, −9.5%) diverge because sessions count visits from all traffic types while clicks count only GSC-tracked organic clicks. Both indicate modest decline.</li>
+        <li>Keywords Top 1–3 (+18.7%) improving while overall clicks fall: ranking quality is improving on branded/navigational terms while high-volume TOFU blog content loses impressions — consistent with the BOFU pivot.</li>
+        <li>Revenue (+5.8%) and Purchases (+7.7%) both growing despite traffic decline — conversion rate and average order value improving.</li>
+        <li>Large bandwidth-plan revenue increases partly reflect Kinsta's migration from visits-based to bandwidth-based billing (see /blog/bandwidth-based-plans/). Prior-period "Visits" variants and current-period "Bandwidth" variants are the same plan tier.</li>
+        <li>Jun 22 session spike caused by new bot-traffic content pages — not a ranking event. GSC clicks for that date are normal.</li>
       </ul>
     </div>
   </footer>
@@ -618,366 +507,289 @@ body {
 </div><!-- /wrap -->
 
 <script>
-const LABELS = ['Jun 7','Jun 8','Jun 9','Jun 10','Jun 11','Jun 12','Jun 13','Jun 14','Jun 15','Jun 16','Jun 17','Jun 18','Jun 19','Jun 20','Jun 21','Jun 22','Jun 23','Jun 24','Jun 25','Jun 26','Jun 27','Jun 28','Jun 29','Jun 30','Jul 1','Jul 2','Jul 3','Jul 4','Jul 5','Jul 6'];
-const CURR_SESSIONS = [14991,20097,24742,22357,20193,16818,12893,14690,18542,19881,18222,18052,16809,13543,15707,30324,27218,19402,22255,17774,13800,14858,21152,22415,19302,18791,16207,12487,15298,19218];
-const PREV_SESSIONS = [18274,15216,16416,19335,20335,20776,19506,17871,14578,16008,20394,21946,20889,20834,18321,12896,15374,20193,19201,19653,19205,20386,13635,15995,20136,20245,19961,19087,17155,13155];
-const CURR_USERS =   [14744,19628,24024,22636,20127,16355,12727,14849,18593,19944,17913,17952,16855,13361,15902,30417,26771,19701,21744,17527,13602,14682,20633,22403,18925,18348,15855,12385,14836,19333];
-const PREV_USERS =   [17643,14857,15771,19585,19801,20297,19175,17297,14738,15657,19948,21428,20662,20773,18062,13066,14622,20435,18874,18879,19155,20059,13420,15555,20078,19905,19452,18920,16822,12773];
+const fmt = n => Number(n).toLocaleString();
+const fmtK = n => n >= 10000 ? (n/1000).toFixed(0)+'k' : n >= 1000 ? (n/1000).toFixed(1)+'k' : n.toString();
 
-let activeMetric = 'sessions';
+// ── Chart data ──────────────────────────────────────────
+const LABELS   = ['Jun 7','Jun 8','Jun 9','Jun 10','Jun 11','Jun 12','Jun 13','Jun 14','Jun 15','Jun 16','Jun 17','Jun 18','Jun 19','Jun 20','Jun 21','Jun 22','Jun 23','Jun 24','Jun 25','Jun 26','Jun 27','Jun 28','Jun 29','Jun 30','Jul 1','Jul 2','Jul 3','Jul 4','Jul 5','Jul 6'];
+const C_SES    = [14991,20097,24742,22357,20193,16818,12893,14690,18542,19881,18222,18052,16809,13543,15707,30324,27218,19402,22255,17774,13800,14858,21152,22415,19302,18791,16207,12487,15298,19218];
+const P_SES    = [18274,15216,16416,19335,20335,20776,19506,17871,14578,16008,20394,21946,20889,20834,18321,12896,15374,20193,19201,19653,19205,20386,13635,15995,20136,20245,19961,19087,17155,13155];
+const C_USR    = [14744,19628,24024,22636,20127,16355,12727,14849,18593,19944,17913,17952,16855,13361,15902,30417,26771,19701,21744,17527,13602,14682,20633,22403,18925,18348,15855,12385,14836,19333];
+const P_USR    = [17643,14857,15771,19585,19801,20297,19175,17297,14738,15657,19948,21428,20662,20773,18062,13066,14622,20435,18874,18879,19155,20059,13420,15555,20078,19905,19452,18920,16822,12773];
 
-// ── Chart ──────────────────────────────────────────────
-const canvas = document.getElementById('trend-canvas');
-const tooltip = document.getElementById('tooltip');
+const ANNOTATIONS = [
+  { idx: 15, label: 'Jun 22', color: '#1EC8AC',
+    title: 'New content launch — session spike',
+    detail: 'Three pages launched: /ai-bot-traffic/, /es/trafico-ia-bots/, /es/proteccion-contra-bots/. Sessions: 30,324 (+93% day-on-day). GSC clicks unchanged — organic rank not involved. Driven by social shares and direct links.' }
+];
+
+let activeM = 'sessions';
 let canvasW = 0;
-
-function fmt(n) { return n.toLocaleString(); }
-function fmtK(n) {
-  if (n >= 10000) return (n/1000).toFixed(0) + 'k';
-  if (n >= 1000) return (n/1000).toFixed(1) + 'k';
-  return n.toString();
-}
+const canvas = document.getElementById('chart');
+const tt = document.getElementById('tt');
 
 function renderChart() {
-  const curr = activeMetric === 'sessions' ? CURR_SESSIONS : CURR_USERS;
-  const prev = activeMetric === 'sessions' ? PREV_SESSIONS : PREV_USERS;
-
+  const curr = activeM === 'sessions' ? C_SES : C_USR;
+  const prev = activeM === 'sessions' ? P_SES : P_USR;
   const dpr = window.devicePixelRatio || 1;
   const rect = canvas.parentElement.getBoundingClientRect();
-  const W = Math.floor(rect.width);
-  const H = 220;
+  const W = Math.floor(rect.width); const H = 218;
   canvasW = W;
-  canvas.width = W * dpr;
-  canvas.height = H * dpr;
-  canvas.style.width = W + 'px';
-  canvas.style.height = H + 'px';
-
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
-
-  const PAD = {t: 16, r: 24, b: 0, l: 52};
-  const plotW = W - PAD.l - PAD.r;
-  const plotH = H - PAD.t - PAD.b;
-  const maxV = Math.max(...curr, ...prev);
-  const yMax = Math.ceil(maxV / 5000) * 5000 * 1.06;
-
-  const xAt = i => PAD.l + (i / (curr.length - 1)) * plotW;
-  const yAt = v => PAD.t + plotH - (v / yMax) * plotH;
-
-  // Grid lines
-  const ticks = [0, 10000, 20000, 30000].filter(t => t <= yMax);
-  ctx.strokeStyle = 'rgba(30,45,66,0.9)';
-  ctx.lineWidth = 1;
-  ticks.forEach(tick => {
-    const y = yAt(tick);
-    ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(W - PAD.r, y); ctx.stroke();
-    ctx.fillStyle = '#3D5270';
-    ctx.font = '10px -apple-system,Helvetica,sans-serif';
+  const PAD = {t:14, r:22, b:0, l:50};
+  const pw = W - PAD.l - PAD.r, ph = H - PAD.t - PAD.b;
+  const mx = Math.max(...curr, ...prev);
+  const ymax = Math.ceil(mx / 5000) * 5000 * 1.07;
+  const xAt = i => PAD.l + (i / (curr.length-1)) * pw;
+  const yAt = v => PAD.t + ph - (v / ymax) * ph;
+  // Gridlines
+  const ticks = [0, 10000, 20000, 30000].filter(t => t <= ymax);
+  ctx.strokeStyle = 'rgba(30,45,66,.9)'; ctx.lineWidth = 1;
+  ticks.forEach(t => {
+    const y = yAt(t);
+    ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(W-PAD.r, y); ctx.stroke();
+    ctx.fillStyle = '#6B8BAA'; ctx.font = '10px -apple-system,Helvetica,sans-serif';
     ctx.textAlign = 'right';
-    ctx.fillText(fmtK(tick), PAD.l - 6, y + 3.5);
+    ctx.fillText(fmtK(t), PAD.l-6, y+3.5);
   });
-
-  // Previous — area
+  // Prev area
   ctx.beginPath();
-  prev.forEach((v, i) => { const x = xAt(i), y = yAt(v); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
-  ctx.lineTo(xAt(prev.length - 1), PAD.t + plotH);
-  ctx.lineTo(xAt(0), PAD.t + plotH);
-  ctx.closePath();
-  ctx.fillStyle = 'rgba(30,45,66,0.25)';
-  ctx.fill();
-
-  // Previous — line
+  prev.forEach((v,i) => { const x=xAt(i),y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+  ctx.lineTo(xAt(prev.length-1), PAD.t+ph); ctx.lineTo(xAt(0), PAD.t+ph); ctx.closePath();
+  ctx.fillStyle='rgba(30,58,85,.2)'; ctx.fill();
+  // Prev line
   ctx.beginPath();
-  prev.forEach((v, i) => { const x = xAt(i), y = yAt(v); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
-  ctx.strokeStyle = '#253651';
-  ctx.lineWidth = 1.5;
-  ctx.setLineDash([4, 4]);
-  ctx.stroke();
-  ctx.setLineDash([]);
-
-  // Current — area gradient
-  const grad = ctx.createLinearGradient(0, PAD.t, 0, PAD.t + plotH);
-  grad.addColorStop(0, 'rgba(25,187,160,0.22)');
-  grad.addColorStop(1, 'rgba(25,187,160,0.0)');
+  prev.forEach((v,i)=>{ const x=xAt(i),y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+  ctx.strokeStyle='#253A55'; ctx.lineWidth=1.5; ctx.setLineDash([4,4]); ctx.stroke(); ctx.setLineDash([]);
+  // Curr area
+  const g = ctx.createLinearGradient(0,PAD.t,0,PAD.t+ph);
+  g.addColorStop(0,'rgba(30,200,172,.2)'); g.addColorStop(1,'rgba(30,200,172,0)');
   ctx.beginPath();
-  curr.forEach((v, i) => { const x = xAt(i), y = yAt(v); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
-  ctx.lineTo(xAt(curr.length - 1), PAD.t + plotH);
-  ctx.lineTo(xAt(0), PAD.t + plotH);
-  ctx.closePath();
-  ctx.fillStyle = grad;
-  ctx.fill();
-
-  // Current — line
+  curr.forEach((v,i)=>{ const x=xAt(i),y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+  ctx.lineTo(xAt(curr.length-1),PAD.t+ph); ctx.lineTo(xAt(0),PAD.t+ph); ctx.closePath();
+  ctx.fillStyle=g; ctx.fill();
+  // Curr line
   ctx.beginPath();
-  curr.forEach((v, i) => { const x = xAt(i), y = yAt(v); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
-  ctx.strokeStyle = '#19BBA0';
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  // Spike point (Jun 22, index 15)
-  const sX = xAt(15), sY = yAt(curr[15]);
-  ctx.beginPath();
-  ctx.arc(sX, sY, 4, 0, Math.PI * 2);
-  ctx.fillStyle = '#19BBA0';
-  ctx.fill();
-  ctx.beginPath();
-  ctx.arc(sX, sY, 4, 0, Math.PI * 2);
-  ctx.strokeStyle = '#0D1117';
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
+  curr.forEach((v,i)=>{ const x=xAt(i),y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+  ctx.strokeStyle='#1EC8AC'; ctx.lineWidth=2; ctx.stroke();
+  // Annotation dots
+  ANNOTATIONS.forEach(a => {
+    const sx=xAt(a.idx), sy=yAt(curr[a.idx]);
+    ctx.beginPath(); ctx.arc(sx,sy,5,0,Math.PI*2);
+    ctx.fillStyle=a.color; ctx.fill();
+    ctx.beginPath(); ctx.arc(sx,sy,5,0,Math.PI*2);
+    ctx.strokeStyle='#0D1117'; ctx.lineWidth=2; ctx.stroke();
+  });
   // X axis labels
-  ctx.fillStyle = '#3D5270';
-  ctx.font = '10px -apple-system,Helvetica,sans-serif';
-  ctx.textAlign = 'center';
-  [0, 6, 13, 20, 29].forEach(i => {
-    ctx.fillText(LABELS[i], xAt(i), PAD.t + plotH - 4);
-  });
+  ctx.fillStyle='#6B8BAA'; ctx.font='10px -apple-system,Helvetica,sans-serif'; ctx.textAlign='center';
+  [0,7,14,21,29].forEach(i => ctx.fillText(LABELS[i], xAt(i), PAD.t+ph-4));
 }
 
-// ── Tooltip hover ──
-canvas.addEventListener('mousemove', e => {
-  const curr = activeMetric === 'sessions' ? CURR_SESSIONS : CURR_USERS;
-  const prev = activeMetric === 'sessions' ? PREV_SESSIONS : PREV_USERS;
-  const rect = canvas.getBoundingClientRect();
-  const PAD_L = 52, PAD_R = 24;
-  const plotW = canvasW - PAD_L - PAD_R;
-  const mx = e.clientX - rect.left - PAD_L;
-  const idx = Math.round((mx / plotW) * (curr.length - 1));
-  if (idx < 0 || idx >= curr.length) { tooltip.style.opacity = '0'; return; }
-
-  const label = LABELS[idx];
-  const cv = curr[idx], pv = prev[idx];
-  const pct = (((cv - pv) / pv) * 100).toFixed(1);
-  const dir = cv >= pv ? '▲' : '▼';
-  const col = cv >= pv ? '#10B981' : '#F43F5E';
-
-  tooltip.innerHTML = `
-    <div class="tooltip-label">${label}</div>
-    <div class="tooltip-row"><span><span class="tooltip-dot" style="background:#19BBA0"></span>Current</span><strong>${fmt(cv)}</strong></div>
-    <div class="tooltip-row"><span><span class="tooltip-dot" style="background:#253651"></span>Previous</span><strong>${fmt(pv)}</strong></div>
-    <div class="tooltip-row" style="margin-top:2px;color:${col}"><span>vs prior period</span><strong>${dir} ${Math.abs(pct)}%</strong></div>
-  `;
-
-  const ww = window.innerWidth;
-  let left = e.pageX + 12;
-  if (left + 180 > ww) left = e.pageX - 192;
-  tooltip.style.left = left + 'px';
-  tooltip.style.top = (e.pageY - 40) + 'px';
-  tooltip.style.opacity = '1';
-});
-canvas.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; });
-
-// ── Toggle ──
-document.querySelectorAll('.toggle-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeMetric = btn.dataset.metric;
-    renderChart();
+// Tooltip
+function handleMove(e) {
+  const curr = activeM === 'sessions' ? C_SES : C_USR;
+  const prev = activeM === 'sessions' ? P_SES : P_USR;
+  const r = canvas.getBoundingClientRect();
+  const mx = e.clientX - r.left - 50;
+  const idx = Math.round((mx / (canvasW-72)) * (curr.length-1));
+  if (idx < 0 || idx >= curr.length) { tt.style.opacity='0'; return; }
+  const cv=curr[idx], pv=prev[idx];
+  const pct=(((cv-pv)/pv)*100).toFixed(1);
+  const dir=cv>=pv?'▲':'▼'; const col=cv>=pv?'#10CF8E':'#FF5473';
+  // Check annotation
+  const ann = ANNOTATIONS.find(a=>a.idx===idx);
+  let extra = '';
+  if (ann) extra=`<div style="margin-top:4px;padding-top:4px;border-top:1px solid #253A55;font-size:.629rem;color:#7A9AB8;line-height:1.5;max-width:200px">${ann.title}</div>`;
+  tt.innerHTML=`
+    <div class="tt-lbl">${LABELS[idx]}</div>
+    <div class="tt-row"><span><span class="tt-dot" style="background:#1EC8AC"></span>Current</span><strong>${fmt(cv)}</strong></div>
+    <div class="tt-row"><span><span class="tt-dot" style="background:#253A55"></span>Previous</span><strong>${fmt(pv)}</strong></div>
+    <div class="tt-row" style="color:${col}"><span>vs prior period</span><strong>${dir} ${Math.abs(pct)}%</strong></div>
+    ${extra}`;
+  const ww=window.innerWidth;
+  let left=e.pageX+14;
+  if(left+210>ww) left=e.pageX-224;
+  tt.style.left=left+'px'; tt.style.top=(e.pageY-50)+'px'; tt.style.opacity='1';
+}
+canvas.addEventListener('mousemove', handleMove);
+canvas.addEventListener('mouseleave',()=>{ tt.style.opacity='0'; });
+document.querySelectorAll('.tog').forEach(b => {
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tog').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); activeM=b.dataset.m; renderChart();
   });
 });
 
-// ── Build bar rows ──
-function barRow(label, curr, prev, maxVal, isNew, href) {
-  const pct = prev ? (((curr - prev) / prev) * 100) : null;
-  const pctStr = pct === null ? 'new' : (pct > 0 ? `+${pct.toFixed(1)}%` : `${pct.toFixed(1)}%`);
-  const cls = pct === null ? 'new' : (pct >= 0 ? 'up' : 'down');
-  const currW = (curr / maxVal * 100).toFixed(1);
-  const prevW = prev ? (prev / maxVal * 100).toFixed(1) : '0';
-  const displayLabel = href ? `<a href="https://kinsta.com${href}" target="_blank" rel="noopener">${label}</a>` : label;
-  return `
-    <div class="bar-row">
+// ── Channel bars ──────────────────────────────────────────
+const channels=[
+  {n:'Organic Search',c:236761,p:242671},
+  {n:'Direct',c:131721,p:124095},
+  {n:'Paid Social',c:110426,p:96422},
+  {n:'Cross-network',c:20101,p:24181},
+  {n:'Paid Search',c:18070,p:16511},
+  {n:'Referral',c:12788,p:15887},
+  {n:'Unassigned',c:9493,p:9341},
+  {n:'Organic Social',c:4347,p:2587},
+  {n:'AI Assistant',c:2763,p:924},
+  {n:'Email',c:2740,p:3354},
+];
+function barRows(items, maxV, container) {
+  container.innerHTML = items.map(({n,c,p,href})=>{
+    const pct=p?(((c-p)/p)*100):null;
+    const ps=pct===null?'new':(pct>=0?`+${pct.toFixed(1)}%`:`${pct.toFixed(1)}%`);
+    const cls=pct===null?'new':pct>=0?'up':'down';
+    const cw=(c/maxV*100).toFixed(1), pw=p?(p/maxV*100).toFixed(1):'0';
+    const lbl=href?`<a href="https://kinsta.com${href}" target="_blank" rel="noopener">${n}</a>`:n;
+    return `<div class="bar-row">
       <div class="bar-meta">
-        <div class="bar-label">${displayLabel}</div>
-        <div class="bar-right">
-          <div class="bar-value">${fmt(curr)}</div>
-          <div class="bar-delta ${cls}">${pctStr}</div>
-        </div>
+        <div class="bar-lbl">${lbl}</div>
+        <div class="bar-r"><div class="bar-val">${fmt(c)}</div><div class="bar-d ${cls}">${ps}</div></div>
       </div>
       <div class="bar-track">
-        <div class="bar-fill prev" style="width:${prevW}%"></div>
-        <div class="bar-fill curr" style="width:${currW}%"></div>
+        <div class="bar-fill-prev" style="width:${pw}%"></div>
+        <div class="bar-fill-curr" style="width:0%"  data-w="${cw}"></div>
       </div>
     </div>`;
+  }).join('');
 }
+barRows(channels, channels[0].c, document.getElementById('ch-bars'));
 
-// ── Channels ──
-const channels = [
-  {name:'Organic Search',  curr:236761, prev:242671},
-  {name:'Direct',          curr:131721, prev:124095},
-  {name:'Paid Social',     curr:110426, prev:96422},
-  {name:'Cross-network',   curr:20101,  prev:24181},
-  {name:'Paid Search',     curr:18070,  prev:16511},
-  {name:'Referral',        curr:12788,  prev:15887},
-  {name:'Unassigned',      curr:9493,   prev:9341},
-  {name:'Organic Social',  curr:4347,   prev:2587},
-  {name:'AI Assistant',    curr:2763,   prev:924},
-  {name:'Email',           curr:2740,   prev:3354},
+// ── Top pages ──────────────────────────────────────────
+const pages=[
+  {n:'/',                               c:56573, p:56729},
+  {n:'/ai-bot-traffic/',               c:25081, p:null,  href:'/ai-bot-traffic/'},
+  {n:'/wordpress-hosting/',            c:20251, p:15578, href:'/wordpress-hosting/'},
+  {n:'/pricing/',                      c:12472, p:13787, href:'/pricing/'},
+  {n:'/es/trafico-ia-bots/',           c:11040, p:null,  href:'/es/trafico-ia-bots/'},
+  {n:'/es/proteccion-contra-bots/',    c:10424, p:10},
+  {n:'/add-ons/kinsta-auto-updates/',  c:9682,  p:14447},
+  {n:'/kinsta-support/',               c:9079,  p:15163},
+  {n:'/blog/bandwidth-based-plans/',   c:9031,  p:11379},
+  {n:'/clients/',                      c:8745,  p:25450},
 ];
-const chMax = channels[0].curr;
-document.getElementById('channel-bars').innerHTML = channels.map(c => barRow(c.name, c.curr, c.prev, chMax)).join('');
+barRows(pages, pages[0].c, document.getElementById('pg-bars'));
 
-// ── Top Pages (GA4) ──
-const ga4Pages = [
-  {path:'/',                              curr:56573, prev:56729},
-  {path:'/ai-bot-traffic/',              curr:25081, prev:null},
-  {path:'/wordpress-hosting/',          curr:20251, prev:15578},
-  {path:'/pricing/',                    curr:12472, prev:13787},
-  {path:'/es/trafico-ia-bots/',         curr:11040, prev:null},
-  {path:'/es/proteccion-contra-bots/',  curr:10424, prev:10},
-  {path:'/add-ons/kinsta-auto-updates/',curr:9682,  prev:14447},
-  {path:'/kinsta-support/',             curr:9079,  prev:15163},
-  {path:'/blog/bandwidth-based-plans/', curr:9031,  prev:11379},
-  {path:'/clients/',                    curr:8745,  prev:25450},
+// ── Key intent pages table ──────────────────────────────
+const keyPages=[
+  {u:'/wordpress-hosting/',           c:20251, p:15578},
+  {u:'/pricing/',                     c:12472, p:13787},
+  {u:'/add-ons/kinsta-auto-updates/', c:9682,  p:14447},
+  {u:'/cloudways-alternative/',       c:6625,  p:1589},
+  {u:'/signup/wp/',                   c:4439,  p:4370},
+  {u:'/agency-partner-program/',      c:3853,  p:4122},
+  {u:'/kinsta-reviews/',              c:2459,  p:3089},
+  {u:'/first-month-free/',            c:1629,  p:1234},
+  {u:'/contact-us/',                  c:1058,  p:1137},
+  {u:'/affiliates/',                  c:1382,  p:1366},
+  {u:'/talk-to-sales/',               c:456,   p:459},
+  {u:'/cloudflare-integration/',      c:308,   p:429},
 ];
-const pgMax = ga4Pages[0].curr;
-document.getElementById('page-bars').innerHTML = ga4Pages.map(p =>
-  barRow(p.path, p.curr, p.prev, pgMax, !p.prev, p.path.startsWith('/') ? p.path : null)
-).join('');
-
-// ── Key Pages ──
-const keyPages = [
-  {path:'/wordpress-hosting/',          curr:20251, prev:15578},
-  {path:'/pricing/',                    curr:12472, prev:13787},
-  {path:'/cloudways-alternative/',      curr:6625,  prev:1589},
-  {path:'/add-ons/kinsta-auto-updates/',curr:9682,  prev:14447},
-  {path:'/signup/wp/',                  curr:4439,  prev:4370},
-  {path:'/agency-partner-program/',     curr:3853,  prev:4122},
-  {path:'/first-month-free/',           curr:1629,  prev:1234},
-  {path:'/kinsta-reviews/',             curr:2459,  prev:3089},
-  {path:'/talk-to-sales/',              curr:456,   prev:459},
-  {path:'/contact-us/',                 curr:1058,  prev:1137},
-  {path:'/cloudflare-integration/',     curr:308,   prev:429},
-  {path:'/affiliates/',                 curr:1382,  prev:1366},
-];
-
-const kpHtml = `
-  <div class="kp-header">Page</div>
-  <div class="kp-header num">Sessions</div>
-  <div class="kp-header num">Prior</div>
-  <div class="kp-header num">Change</div>
-  ${keyPages.map(p => {
-    const pct = p.prev ? (((p.curr - p.prev) / p.prev) * 100).toFixed(1) : null;
-    const dir = pct !== null ? (parseFloat(pct) >= 0 ? '+' : '') : '';
-    const cls = pct === null ? 'new' : (parseFloat(pct) >= 0 ? 'up' : 'down');
-    const pctDisp = pct === null ? 'new' : `${dir}${pct}%`;
-    return `<div class="kp-row" style="display:contents">
-      <div class="kp-cell url">${p.path}</div>
-      <div class="kp-cell num">${fmt(p.curr)}</div>
-      <div class="kp-cell num">${p.prev ? fmt(p.prev) : '—'}</div>
-      <div class="kp-cell delta-cell ${cls}">${pctDisp}</div>
-    </div>`;
-  }).join('')}`;
-document.getElementById('key-pages').innerHTML = kpHtml;
-
-// ── Ahrefs Top Pages ──
-const ahrefsPages = [
-  {url:'kinsta.com/',                        curr:47098, prev:45859,  bpDiff: 270},
-  {url:'/blog/err_ssl_protocol_error/',      curr:13319, prev:15417,  bpDiff:-1360},
-  {url:'/blog/javascript-libraries/',        curr:6296,  prev:6432,   bpDiff:-211},
-  {url:'/nl/ (Dutch homepage)',              curr:5715,  prev:6181,   bpDiff:-753},
-  {url:'my.kinsta.com/login/',              curr:4240,  prev:4115,   bpDiff: 303},
-  {url:'/blog/trials/',                     curr:4046,  prev:4051,   bpDiff:-12},
-  {url:'/blog/err_cache_miss/',             curr:4033,  prev:3468,   bpDiff: 1629},
-  {url:'/blog/best-programming-fonts/',     curr:3493,  prev:6930,   bpDiff:-4959},
-  {url:'/jp/blog/install-python/',          curr:3406,  prev:1309,   bpDiff: 16019},
-  {url:'/jp/blog/400-bad-request/',         curr:3363,  prev:4917,   bpDiff:-3160},
-];
-const ahMax = ahrefsPages[0].curr;
-document.getElementById('ahrefs-pages').innerHTML = ahrefsPages.map(p => {
-  const pct = p.bpDiff / 100;
-  const pctStr = pct >= 0 ? `+${pct.toFixed(1)}%` : `${pct.toFixed(1)}%`;
-  const cls = pct >= 0 ? 'up' : 'down';
-  const w = (p.curr / ahMax * 100).toFixed(1);
-  const pw = (p.prev / ahMax * 100).toFixed(1);
-  return `<div class="bar-row">
-    <div class="bar-meta">
-      <div class="bar-label" title="${p.url}">${p.url}</div>
-      <div class="bar-right">
-        <div class="bar-value">${fmtK(p.curr)}</div>
-        <div class="bar-delta ${cls}">${pctStr}</div>
-      </div>
-    </div>
-    <div class="bar-track">
-      <div class="bar-fill prev" style="width:${pw}%"></div>
-      <div class="bar-fill curr" style="width:${w}%"></div>
-    </div>
-  </div>`;
+document.getElementById('kp-tbody').innerHTML = keyPages.map(r=>{
+  const pct=r.p?(((r.c-r.p)/r.p)*100):null;
+  const dir=pct===null?'new':pct>=0?`+${pct.toFixed(1)}%`:`${pct.toFixed(1)}%`;
+  const cls=pct===null?'new':pct>=0?'up':'down';
+  return `<tr>
+    <td class="url">${r.u}</td>
+    <td class="r">${fmt(r.c)}</td>
+    <td class="r">${r.p?fmt(r.p):'—'}</td>
+    <td class="r ${cls}">${dir}</td>
+  </tr>`;
 }).join('');
 
-// ── Keywords ──
-const keywords = [
-  {kw:'kinsta',            traffic:8238, pos:1,  vol:11000,  diff:null},
-  {kw:'err_cache_miss',    traffic:4926, pos:2,  vol:17000,  diff:0},
-  {kw:'kisnta',            traffic:4461, pos:1,  vol:4300,   diff:0},
-  {kw:'kinsta.com',        traffic:3730, pos:1,  vol:3600,   diff:0},
-  {kw:'javascript libraries', traffic:3239, pos:6, vol:102000, diff:0},
-  {kw:'python インストール',  traffic:3017, pos:1,  vol:18000,  diff:-2},
-  {kw:'err_address_unreachable', traffic:2767, pos:2, vol:3100, diff:1},
-  {kw:'kinsta login',      traffic:2100, pos:1,  vol:2700,   diff:0},
-  {kw:'kinsta free trial', traffic:1994, pos:1,  vol:2800,   diff:0},
+// ── GSC Top Keywords ─────────────────────────────────────
+const kwAll=[
+  {q:'kinsta',                     cl:12118, im:26438, pos:1.3},
+  {q:'xnxx server ip not found',   cl:3836,  im:30734, pos:1.4},
+  {q:'kinsta login',               cl:2475,  im:3248,  pos:1.8},
+  {q:'dns_probe_finished_nxdomain',cl:1065,  im:252440,pos:9.4},
+  {q:'err_too_many_redirects',     cl:1044,  im:58279, pos:5.1},
+  {q:'err_ssl_protocol_error',     cl:994,   im:64235, pos:7.2},
+  {q:'検索エンジン',                 cl:936,   im:29454, pos:6.9},
+  {q:'err_ssl_protocol_error (chrome)',cl:879,im:19587,pos:5.0},
+  {q:'kinsta hosting',             cl:633,   im:4165,  pos:1.4},
+  {q:'mykinsta',                   cl:613,   im:1026,  pos:2.8},
+  {q:'err_cache_miss',             cl:601,   im:85139, pos:5.5},
+  {q:'err_name_not_resolved',      cl:583,   im:48359, pos:7.2},
+  {q:'net::err_cert_authority_invalid',cl:495,im:19066,pos:6.7},
+  {q:'err_connection_refused',     cl:445,   im:52236, pos:6.9},
+  {q:'motori di ricerca',          cl:435,   im:6166,  pos:8.6},
 ];
-const kwMax = keywords[0].traffic;
-document.getElementById('keyword-list').innerHTML = keywords.map(k => {
-  const w = (k.traffic / kwMax * 100).toFixed(1);
-  const posCls = k.pos <= 3 ? '' : (k.pos <= 10 ? 'mid' : 'low');
-  const diffStr = k.diff === null ? '' : (k.diff === 0 ? '' : (k.diff < 0 ? `▲${Math.abs(k.diff)}` : `▼${k.diff}`));
-  const volStr = k.vol >= 1000 ? (k.vol >= 100000 ? (k.vol/1000).toFixed(0)+'k' : (k.vol/1000).toFixed(0)+'k') : k.vol.toString();
-  return `<div class="bar-row">
-    <div class="bar-meta">
-      <div class="bar-label">${k.kw}</div>
-      <div class="bar-right" style="gap:6px">
-        <span class="pos-badge ${posCls}">#${k.pos}</span>
-        <span class="kw-vol">vol ${volStr}</span>
-        <div class="bar-value">${fmtK(k.traffic)}</div>
-      </div>
-    </div>
-    <div class="bar-track">
-      <div class="bar-fill curr" style="width:${w}%"></div>
-    </div>
-  </div>`;
+function posPill(pos){
+  const p=parseFloat(pos);
+  const cls=p<=3?'top':p<=10?'mid':'low';
+  return `<span class="pos-pill ${cls}">#${p.toFixed(1)}</span>`;
+}
+function kwRows(items, tbodyId) {
+  document.getElementById(tbodyId).innerHTML = items.map(r=>`
+    <tr>
+      <td class="kw-term">${r.q}</td>
+      <td class="r">${posPill(r.pos)}</td>
+      <td class="r">${fmtK(r.im)}</td>
+      <td class="r">${fmt(r.cl)}</td>
+    </tr>`).join('');
+}
+kwRows(kwAll, 'kw-all-tbody');
+
+// ── Key intent page keywords (GSC filtered) ─────────────
+const kwKey=[
+  {q:'kinsta affiliate program',   cl:348, im:782,  pos:2.8},
+  {q:'kinsta pricing',             cl:298, im:1149, pos:1.0},
+  {q:'kinsta',                     cl:225, im:41294,pos:1.0},
+  {q:'kinsta plans',               cl:107, im:569,  pos:1.0},
+  {q:'kinsta wordpress hosting',   cl:65,  im:1255, pos:2.4},
+  {q:'kinsta affiliate',           cl:64,  im:149,  pos:1.0},
+  {q:'kinsta hosting',             cl:63,  im:6330, pos:1.0},
+  {q:'kinsta hosting plans',       cl:40,  im:303,  pos:1.0},
+  {q:'kinsta price',               cl:22,  im:187,  pos:1.0},
+  {q:'kinsta affiliate login',     cl:16,  im:19,   pos:3.6},
+  {q:'kinsta cloudflare',          cl:15,  im:140,  pos:2.3},
+  {q:'kinsta support',             cl:14,  im:125,  pos:2.2},
+  {q:'kinsta plan',                cl:14,  im:14,   pos:1.0},
+  {q:'kinsta pricing plans',       cl:11,  im:45,   pos:1.0},
+  {q:'kinsta agency',              cl:10,  im:30,   pos:2.2},
+];
+kwRows(kwKey, 'kw-key-tbody');
+
+// ── Revenue (merged bandwidth) ────────────────────────────
+const revItems=[
+  // {name, currRev, currUnits, prevRev, prevUnits}
+  {n:'WP 2',        cr:25395, cu:352, pr:23715, pu:315},  // WP 2 + WP 2 Bandwidth merged
+  {n:'Single 20GB', cr:18550, cu:566, pr:16765, pu:517},  // Single 20GB + Bandwidth merged
+  {n:'addon',       cr:8261,  cu:149, pr:6990,  pu:148},
+  {n:'WP 40',       cr:8800,  cu:8,   pr:2805,  pu:null}, // WP 40 Visits + Bandwidth (new in curr period)
+  {n:'Single 315k', cr:3730,  cu:7,   pr:1845,  pu:6},
+  {n:'WP 20',       cr:3540,  cu:7,   pr:4080,  pu:8},    // WP 20 Bandwidth curr / WP 20 Visits prev
+  {n:'WP 10',       cr:3520,  cu:12,  pr:2510,  pu:null}, // WP 10 Visits + WP 10 Bandwidth prev
+];
+document.getElementById('rev-tbody').innerHTML = revItems.map(r=>{
+  const revPct=(((r.cr-r.pr)/r.pr)*100).toFixed(1);
+  const revCls=parseFloat(revPct)>=0?'up':'down';
+  const revDir=parseFloat(revPct)>=0?'+':'';
+  let unitPct='', unitCls='', unitDir='';
+  if(r.pu!==null){
+    const u=(((r.cu-r.pu)/r.pu)*100).toFixed(1);
+    unitPct=u; unitCls=parseFloat(u)>=0?'up':'down'; unitDir=parseFloat(u)>=0?'+':'';
+  }
+  return `<tr>
+    <td>${r.n}</td>
+    <td class="rev-spacer r">${fmt(r.cu)}</td>
+    <td class="rev-spacer r ${unitCls}">${r.pu!==null?unitDir+unitPct+'%':'—'}</td>
+    <td class="rev-spacer r">$${fmt(r.cr)}</td>
+    <td class="rev-spacer r ${revCls}">${revDir}${revPct}%</td>
+  </tr>`;
 }).join('');
 
-// ── Revenue ──
-const revenueItems = [
-  {name:'WP 2',                   rev:20230, units:289, prev:18620},
-  {name:'Single 20GB',            rev:13335, units:381, prev:12565},
-  {name:'addon',                  rev:8261,  units:149, prev:6990},
-  {name:'Single 20GB Bandwidth',  rev:5215,  units:185, prev:4200},
-  {name:'WP 2 Bandwidth',         rev:5165,  units:63,  prev:5095},
-  {name:'WP 40 Visits',           rev:4670,  units:4,   prev:2805},
-  {name:'WP 40 Bandwidth',        rev:4130,  units:4,   prev:1100},
-  {name:'Single 315k Visits',     rev:3730,  units:7,   prev:1845},
-  {name:'WP 20 Bandwidth',        rev:3540,  units:7,   prev:730},
-  {name:'WP 10 Visits',           rev:3520,  units:12,  prev:660},
-];
-
-// Split into two columns
-const revHtml = (items) => items.map(r => {
-  const pct = (((r.rev - r.prev) / r.prev) * 100).toFixed(1);
-  const cls = parseFloat(pct) >= 0 ? 'up' : 'down';
-  const dir = parseFloat(pct) >= 0 ? '+' : '';
-  return `<div class="rev-row">
-    <div class="rev-name">${r.name}</div>
-    <div class="rev-units">${r.units} units &nbsp;<span style="color:var(--${cls});font-weight:600">${dir}${pct}%</span></div>
-    <div class="rev-amount">$${fmt(r.rev)}</div>
-  </div>`;
-}).join('');
-
-const half = Math.ceil(revenueItems.length / 2);
-document.getElementById('revenue-grid').innerHTML =
-  `<div>${revHtml(revenueItems.slice(0, half))}</div><div>${revHtml(revenueItems.slice(half))}</div>`;
-
-// ── Initial render ──
+// ── Init ─────────────────────────────────────────────────
 window.addEventListener('load', () => {
   renderChart();
-  // Animate bars
+  // Animate bar fills
   requestAnimationFrame(() => {
-    document.querySelectorAll('.bar-fill').forEach(b => {
-      const w = b.style.width;
-      b.style.width = '0%';
-      setTimeout(() => { b.style.width = w; }, 50);
+    document.querySelectorAll('.bar-fill-curr').forEach(b => {
+      const w = b.dataset.w;
+      setTimeout(() => { b.style.width = w + '%'; b.style.transition='width .55s cubic-bezier(.4,0,.2,1)'; }, 80);
     });
   });
 });
